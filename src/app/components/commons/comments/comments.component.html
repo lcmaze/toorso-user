@@ -1,0 +1,20 @@
+<div class="review-section p-3 mt-4">
+    <div class="d-flex">
+        <div class="stars px-2">5 <span class="material-icons">star_rate</span></div>
+        <div class="cap">Just Awesome!!!</div>
+    </div>
+    <div class="desc mt-2 mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius esse odio alias obcaecati adipisci perferendis minus pariatur beatae explicabo. Repellat, reiciendis. Officiis natus doloribus repellat culpa, sunt repellendus a itaque accusantium incidunt
+        harum nisi inventore consequuntur perferendis sed nostrum? Quis similique, tempore numquam saepe repellat
+    </div>
+    <!-- <div class="desc mt-2 mb-1" [style.height]="readmore ? 'unset' : '50px'">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius esse odio alias obcaecati adipisci perferendis minus pariatur beatae explicabo. Repellat, reiciendis. Officiis natus doloribus repellat culpa, sunt repellendus a itaque accusantium incidunt
+        harum nisi inventore consequuntur perferendis sed nostrum? Quis similique, tempore numquam saepe repellat 
+    </div>
+    <button mat-stroked-button color="primary" class="readmore mb-2" (click)="readmore = !readmore">Read More</button> -->
+    <div class="d-flex justify-content-between">
+        <div class="name">John Henderson</div>
+        <div class="d-flex">
+            <div class="like px-2" (click)="like()"><span class="material-icons" [ngStyle]="{'color': likes === true ? '#0274B9' : '#bebebe'}">thumb_up</span> <span class="count">3</span></div>
+            <div class="dislike px-2" (click)="dislike()"><span class="material-icons" [ngStyle]="{'color': dislikes === true ? '#C62828' : '#bebebe'}">thumb_down</span> <span class="count">3</span></div>
+        </div>
+    </div>
+</div>

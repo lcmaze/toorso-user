@@ -1,0 +1,69 @@
+<ng-container *ngFor="let no of rooms">
+    <div class="card-room mb-4" [ngClass]="{'unavail': no.type === 'inactive','selected': no.added}">
+        <h1 class="p-3 mb-0">{{no.name}}</h1>
+        <div class="sub-head px-3 py-2">
+            <div>{{no.type1}}</div>
+            <div>{{no.type2}}</div>
+        </div>
+        <div class="row mx-0">
+            <div class="col-md-8 px-0">
+                <div class="specialities px-3 py-2">
+                    <div class="nam mb-1">Facilities Included</div>
+                    <li *ngFor="let facilities of no.properties">{{facilities}}</li>
+                </div>
+                <hr class="my-0">
+                <div class="other-list px-3 py-2">
+                    <div class="row mx-0">
+                        <div class="col-md-6 px-0">
+                            <li>{{no.cap1}}</li>
+                        </div>
+                        <div class="col-md-6 px-0">
+                            <li>{{no.cap2}}</li>
+                        </div>
+                        <div class="col-md-6 px-0">
+                            <li>{{no.cap3}}</li>
+                        </div>
+                        <div class="col-md-6 px-0">
+                            <li>{{no.cap4}}</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-0">
+                <div class="addons px-3 py-2" *ngIf="no.addons != null">
+                    <div class="nam mb-1">Addons</div>
+                    <div class="select-section">
+                        <label class="customcheck" *ngFor="let add of no.addons">Add <span class="cost">₹ {{add.price}}/-</span><br><span class="define">{{add.def}}</span>
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="no-addon" *ngIf="no.addons == null">
+                    <img src="assets/images/key-room.svg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row mx-0" style="border-top: 1px solid #eaeaea">
+            <div class="col-md-4 px-0 d-flex align-items-center">
+                <div class="add w-100 px-3 py-2">
+                    <button mat-flat-button color="primary" class="w-100" *ngIf="!no.added" (click)="no.added = !no.added">Add Rooms <mat-icon>add</mat-icon></button>
+                    <button mat-stroked-button color="primary" class="w-100" *ngIf="no.added" (click)="no.added = !no.added">Remove <mat-icon>close</mat-icon></button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 px-0 d-flex align-items-center justify-content-end">
+                <div class="add px-1 px-md-3 py-2" [ngClass]="{'nocount': !no.added}">
+                    <app-counter [value]="1" [btn]="'normal'"></app-counter>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 px-0 d-flex align-items-center justify-content-end">
+                <div class="py-1">
+                    <div class="offer"><span>₹ 1400</span> 5% Discount</div>
+                    <div class="price px-1 px-md-3">
+                        ₹ {{no.baseprice}}/-
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,181 @@
+.head {
+    background-color: #0274b9;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0px 0px 8px 0px #00000030;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    span {
+        color: #fff;
+        font-size: 24px;
+    }
+    h4 {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0px;
+    }
+}
+
+.filter-box {
+    box-shadow: 0px 0px 8px 0px #00000020;
+    border-radius: 6px;
+    background-color: #fff;
+    a {
+        display: block;
+        font-size: 15px;
+        font-family: 'Open Sans SB';
+        color: #3d3d3d;
+        padding: 12px 14px;
+        border-bottom: 1px solid #eaeaea;
+        background-color: #b1dcf7;
+        text-transform: uppercase;
+        span {
+            float: right;
+        }
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    .res-main {
+        padding: 0px 14px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #eaeaea;
+        .count {
+            font-size: 12px;
+            color: #7e7e7e;
+        }
+        .filterfont {
+            font-size: 20px;
+            vertical-align: middle;
+        }
+    }
+}
+
+::ng-deep {
+    .slider {
+        padding: 8px 14px;
+        .ng5-slider {
+            .ng5-slider-selection {
+                background: #c62828 !important;
+            }
+            .ng5-slider-pointer {
+                background-color: #c62828 !important;
+                width: 20px !important;
+                height: 20px !important;
+                top: -8px !important;
+            }
+            .ng5-slider-pointer:focus {
+                outline: none !important
+            }
+            .ng5-slider-pointer.ng5-slider-active:after {
+                background-color: #c62828 !important;
+            }
+            .ng5-slider-pointer:after {
+                top: 6px !important;
+                left: 6px !important;
+            }
+            .ng5-slider-bubble {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.my-4px {
+    margin-top: 4px !important;
+    margin-bottom: 4px !important;
+}
+
+
+/* The customcheck */
+
+.customcheck {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: 'Open Sans R';
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* Hide the browser's default checkbox */
+
+.customcheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+/* Create a custom checkbox */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 1px solid #b9b9b9;
+    border-radius: 5px;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+
+.customcheck input:checked~.checkmark {
+    border: 1px solid #c62828;
+    background-color: #c62828;
+    border-radius: 5px;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the checkmark when checked */
+
+.customcheck input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the checkmark/indicator */
+
+.customcheck .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+@media(min-width:1200px) {
+    section {
+        // position: sticky;
+        // top: 140px;
+        padding-bottom: 20px;
+    }
+}

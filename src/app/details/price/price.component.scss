@@ -1,0 +1,100 @@
+.bg-blue {
+    background: #0272B6
+}
+
+.bg-grey {
+    background-color: #fafafa;
+}
+
+.breadcrumb {
+    background-color: transparent;
+    margin-bottom: 0px;
+    li:after {
+        content: '/';
+        color: #fff;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    li:last-child:after {
+        content: '';
+    }
+    li {
+        a {
+            color: #fff;
+        }
+    }
+}
+
+.heading {
+    font-family: 'Open Sans SB';
+    font-size: 28px;
+    color: #3d3d3d;
+    border-bottom: 1px solid #dfdfdf;
+    span {
+        font-size: 18px;
+        color: #7e7e7e;
+    }
+}
+
+.checkout-menu {
+    // border: 1px solid #c62828;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0px 6px 8px 0px #00000025;
+    .cap {
+        background-color: #c62828;
+        color: #fff;
+        font-size: 20px;
+        font-family: 'Open Sans B';
+        padding: 12px 12px;
+        margin-bottom: 0;
+    }
+    .bill-section {
+        padding: 0px 12px;
+        .name,
+        .qty,
+        .price {
+            font-family: 'Open Sans SB';
+            font-size: 13px;
+            color: #3d3d3d;
+            border-bottom: 1px solid #eaeaea;
+            padding: 4px 0px;
+        }
+        .name1,
+        .qty1,
+        .price1 {
+            font-family: 'Open Sans R';
+            font-size: 13px;
+            color: #7e7e7e;
+            padding: 4px 0px;
+        }
+        .qty,
+        .qty1,
+        .price,
+        .price1 {
+            text-align: right;
+        }
+        .total,
+        .price2 {
+            text-align: right;
+            font-family: 'Open Sans B';
+            font-size: 16px;
+            padding: 4px 0px;
+        }
+    }
+    .foot {
+        display: flex;
+        justify-content: end;
+        border-top: 1px solid #eaeaea;
+    }
+}
+
+.no-select {
+    opacity: 0.6;
+    pointer-events: none;
+    user-select: none;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+}

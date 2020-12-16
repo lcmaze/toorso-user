@@ -1,0 +1,69 @@
+<app-header></app-header>
+<app-search></app-search>
+
+<section class="bg-grey py-5">
+    <div class="w-80">
+        <div class="heading">
+            <h1 class="mx-2 mb-3 p-3">Tourism Categories <span class="ml-2 material-icons">category</span></h1>
+        </div>
+        <div class="row mx-0">
+            <div class="col-md-6 col-xl-3 p-2">
+                <app-category-card color="#C62828" logo="A" icon="v"></app-category-card>
+            </div>
+            <div class="col-md-6 col-xl-3 p-2">
+                <app-category-card color="#0274B9" logo="A" icon="v"></app-category-card>
+            </div>
+            <div class="col-md-6 col-xl-3 p-2">
+                <app-category-card color="#C62828" logo="A" icon="v"></app-category-card>
+            </div>
+            <div class="col-md-6 col-xl-3 p-2">
+                <app-category-card color="#0274B9" logo="A" icon="v"></app-category-card>
+            </div>
+            <div class="col-md-6 col-xl-3 p-2">
+                <app-category-card color="#C62828" logo="A" icon="v"></app-category-card>
+            </div>
+            <div class="col-md-6 col-xl-3 p-2">
+                <app-category-card color="#0274B9" logo="A" icon="v"></app-category-card>
+            </div>
+            <div class="col-md-6 col-xl-3 p-2">
+                <app-category-card color="#C62828" logo="A" icon="v"></app-category-card>
+            </div>
+            <div class="col-md-6 col-xl-3 p-2">
+                <app-category-card color="#0274B9" logo="A" icon="v"></app-category-card>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-80">
+        <div class="ads mx-2 my-5"></div>
+    </div>
+
+    <div class="w-80">
+        <div class="heading">
+            <h1 class="mx-2 mb-3 p-3">Top Destinations <span class="ml-2 material-icons">location_on</span></h1>
+        </div>
+        <owl-carousel [options]="mySlideOptions" [carouselClasses]="['owl-theme', 'sliding']">
+            <div class="item p-2">
+                <app-placecard></app-placecard>
+            </div>
+            <div class="item p-2">
+                <app-placecard></app-placecard>
+            </div>
+            <div class="item p-2">
+                <app-placecard></app-placecard>
+            </div>
+            <div class="item p-2">
+                <app-placecard></app-placecard>
+            </div>
+            <div class="item p-2">
+                <app-placecard></app-placecard>
+            </div>
+            <div class="item p-2">
+                <app-placecard></app-placecard>
+            </div>
+        </owl-carousel>
+    </div>
+</section>
+
+
+<app-footer></app-footer>

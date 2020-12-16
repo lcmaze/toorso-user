@@ -1,0 +1,91 @@
+.search {
+    background-color: #FAECEE;
+    // position: sticky;
+    // top: 0;
+    // z-index: 4;
+}
+
+.layout {
+    box-shadow: 0px 6px 8px 0px #00000015;
+    padding: 5px 14px;
+    border-radius: 6px;
+    background-color: #fff;
+    display: block;
+    height: 100%;
+    .datepicker {
+        label {
+            font-size: 14px;
+            width: 100%;
+            font-weight: 600;
+            margin-bottom: 0px;
+            color: #7e7e7e;
+        }
+        input {
+            border: none;
+            background: transparent;
+            padding: 0px;
+            width: 100%;
+            color: #3d3d3d;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        input::placeholder {
+            color: #acacac;
+        }
+        .material-icons {
+            font-size: 20px;
+            vertical-align: sub;
+        }
+    }
+}
+
+.guest {
+    box-shadow: 0px 6px 8px 0px #00000015;
+    padding: 5px 14px;
+    border-radius: 6px;
+    background-color: #fff;
+    display: block;
+    height: 100%;
+    label {
+        font-size: 14px;
+        width: 100%;
+        font-weight: 600;
+        margin-bottom: 0px;
+        color: #7e7e7e;
+        .material-icons {
+            font-size: 20px;
+            vertical-align: sub;
+        }
+    }
+    .count-res {
+        color: #3d3d3d;
+        font-weight: 600;
+        font-size: 14px;
+    }
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    button {
+        height: 100%;
+        width: 100%;
+        box-shadow: 0px 6px 8px 0px #00000015;
+        font-family: 'Open Sans SB' !important;
+    }
+}
+
+@media(max-width:1200px) {
+    .search {
+        position: unset;
+        top: unset;
+        z-index: unset;
+    }
+    .buttons {
+        justify-content: center;
+        button {
+            width: unset;
+        }
+    }
+}

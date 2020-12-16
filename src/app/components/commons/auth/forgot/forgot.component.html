@@ -1,0 +1,38 @@
+<section>
+    <div class="logo">
+        <img src="assets/images/logo-red.png" alt="">
+    </div>
+
+    <div class="sect mt-3 mb-3">Reset Password</div>
+
+    <form *ngIf="emailview">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Email Id</mat-label>
+            <input matInput placeholder="Email">
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="login-btn" (click)="send()">Send OTP</button>
+    </form>
+
+    <form *ngIf="otpview">
+        <div class="emailid mb-3">OTP sent to
+            <span>toorsoadmin@yahoo.com</span>
+        </div>
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>OTP</mat-label>
+            <input matInput placeholder="Enter OTP">
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="login-btn" (click)="submitotp()">Submit</button>
+    </form>
+
+    <form *ngIf="passwordview">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>New Password</mat-label>
+            <input matInput placeholder="Enter New Password">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>ReEnter Password</mat-label>
+            <input matInput placeholder="ReEnter New Password">
+        </mat-form-field>
+        <button mat-flat-button color="primary" class="login-btn">Submit</button>
+    </form>
+</section>

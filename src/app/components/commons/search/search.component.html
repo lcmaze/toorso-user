@@ -1,0 +1,49 @@
+<section class="search" [ngStyle]="country?{'background-color': '#FAECEE'} : {'background-color': '#C62828'}">
+    <div class="w-80">
+        <div class="row mx-0 py-2" [ngClass]="{'py-xl-3': country===true , 'pt-0 pb-xl-4': country===false}">
+
+            <div class="col-md-12 col-lg-12 px-0" [ngClass]="{'col-xl-7': timeguest===false , 'col-xl-11': timeguest===true}">
+                <div class="row mx-0">
+                    <div class="col-md-6 col-xl py-2 py-xl-3 px-2">
+                        <app-searchbox type="Search"></app-searchbox>
+                    </div>
+
+                    <div class="col-md-6 col-xl py-2 py-xl-3 px-2">
+                        <app-categorybox></app-categorybox>
+                    </div>
+
+                    <div class="col-md-6 col-xl py-2 py-xl-3 px-2" *ngIf="timeguest">
+                        <div class="layout d-flex">
+                            <div class="datepicker" (click)="picker1.open()">
+                                <label><span class="material-icons">event</span> Check In</label>
+                                <input [matDatepicker]="picker1" placeholder="dd/mm/yyyy">
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </div>
+                            <div class="datepicker" (click)="picker2.open()">
+                                <label><span class="material-icons">event</span> Check Out</label>
+                                <input [matDatepicker]="picker2" placeholder="dd/mm/yyyy">
+                                <mat-datepicker #picker2></mat-datepicker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl py-2 py-xl-3 px-2" *ngIf="timeguest">
+                        <div class="guest" (click)="openDialog()">
+                            <label><span class="material-icons">person_add</span> Guests</label>
+                            <div class="count-res">
+                                <span class="count">1 </span> Room, <span class="count">2 </span> Adults, <span class="count">1 </span> Children
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-12 col-xl-1 py-2 py-xl-3 px-2">
+                <div class="buttons">
+                    <button *ngIf="country" mat-flat-button color="warn" class="mr-2">Apply</button>
+                    <button *ngIf="!country" mat-flat-button class="mr-2">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

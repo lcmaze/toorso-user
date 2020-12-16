@@ -1,0 +1,88 @@
+<app-header [country]=true [isloggedin]=true></app-header>
+<app-search [country]=false [timeguest]=false></app-search>
+
+<section class="bg-blue">
+    <div class="w-80">
+        <ol class="breadcrumb px-2 py-3">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Resorts & Homestays</a></li>
+            <li><a href="#">Munnar Resort</a></li>
+            <li><a href="#">Rooms</a></li>
+        </ol>
+    </div>
+</section>
+
+<section class="bg-grey">
+    <div class="w-80 py-5">
+        <div class="row">
+            <div class="col-lg-8 col-xl-7">
+                <h2 class="heading pb-3 mt-4 mb-4">Available Rooms <span>(5)</span></h2>
+                <app-roombox [rooms]="apidata"></app-roombox>
+            </div>
+            <div class="col-lg-4 col-xl-5">
+                <div class="no-select">
+                    <app-detail-search></app-detail-search>
+                </div>
+
+                <div class="checkout-menu mt-4 mx-2">
+                    <h2 class="cap">Your Pick</h2>
+                    <div class="bill-section">
+                        <div class="row mx-0">
+                            <div class="col-6 px-0">
+                                <div class="name">Name</div>
+                            </div>
+                            <div class="col px-0">
+                                <div class="qty">Qty</div>
+                            </div>
+                            <div class="col px-0">
+                                <div class="price">Price</div>
+                            </div>
+                        </div>
+
+                        <ng-container>
+                            <div class="row mx-0">
+                                <div class="col-6 px-0">
+                                    <div class="name1">Ordinary Room - Suitable for 1 Adult</div>
+                                </div>
+                                <div class="col px-0">
+                                    <div class="qty1">2</div>
+                                </div>
+                                <div class="col px-0">
+                                    <div class="price1">₹ 2400</div>
+                                </div>
+                            </div>
+
+                            <div class="row mx-0">
+                                <div class="col-6 px-0">
+                                    <div class="name1">Extra 1 Person</div>
+                                </div>
+                                <div class="col px-0">
+                                    <div class="qty1">1</div>
+                                </div>
+                                <div class="col px-0">
+                                    <div class="price1">₹ 100</div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                        <div class="row mx-0">
+                            <div class="col-9 px-0">
+                                <div class="total">Total</div>
+                            </div>
+                            <div class="col px-0">
+                                <div class="price2">₹ 2500</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="foot p-2">
+                        <button mat-flat-button color="primary" class="w-100">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<app-footer></app-footer>

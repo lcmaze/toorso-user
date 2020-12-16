@@ -1,0 +1,121 @@
+<section>
+    <div class="result-box">
+        <div class="row mx-0">
+            <div class="col-xl-3 px-0">
+                <div class="gallery">
+                    <div [id]="ids" class="carousel slide" style=" height: calc(100% - 60px);min-height: calc(100% - 60px);max-height: calc(100% - 60px);" data-ride="carousel" data-interval="false">
+                        <div class="carousel-inner h100">
+                            <div class="carousel-item h100 active">
+                                <img src="assets/images/resort2.jpg" alt="...">
+                            </div>
+                            <div class="carousel-item h100">
+                                <img src="assets/images/resort2.jpg" alt="...">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" [href]="'#'+ids" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" [href]="'#'+ids" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                    <!-- <owl-carousel [options]="mySlideOptions" [items]="images" [carouselClasses]="['owl-theme', 'sliding']">
+                        <div class="item" *ngFor="let image of mySlideImages;let i = index" style=" height: calc(100% - 60px);min-height: calc(100% - 60px);max-height: calc(100% - 60px);">
+                            <div style=" height: calc(100% - 60px);min-height: calc(100% - 60px);max-height: calc(100% - 60px);">
+                                <img style=" height: calc(100% - 60px);min-height: calc(100% - 60px);max-height: calc(100% - 60px);" src={{image}}/>
+                            </div>
+                        </div>
+                    </owl-carousel> -->
+
+                    <div class="discount">10% Discount on A/C Deluxe Rooms</div>
+                    <div class="price">
+                        <h6>Price Starts from</h6>
+                        <h5>₹ 1000</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 p-3">
+                <div class="row mx-0">
+                    <div class="col-md-10 px-0">
+                        <div class="name">
+                            <h1>Kanmadam Resort</h1>
+                            <div class="grade py-1">
+                                <span class="material-icons">grade</span>
+                                <span class="material-icons">grade</span>
+                                <span class="material-icons">grade</span>
+                                <span class="material-icons">grade</span>
+                                <span class="material-icons">grade</span>
+                            </div>
+                        </div>
+                        <div class="location">
+                            <span class="material-icons">location_on</span>
+                            <span class="pl-2">Kanjirakolly</span>,
+                            <span class="pl-2">Kannur</span>,
+                            <span class="pl-2">Kerala</span>.
+                        </div>
+                        <div class="caption mt-2">
+                            <h6>15 KM away from Kannur International Airport</h6>
+                        </div>
+                        <div class="features mt-3 pl-1">
+                            <mat-chip-list>
+                                <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Cancellation</mat-chip>
+                                <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Tour Guide</mat-chip>
+                                <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Pickup & Drop</mat-chip>
+                                <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Breakfast, Lunch & Dinner</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                        <div class="facilities mt-2">
+                            <h5>Facilities</h5>
+                            <div class="icons">
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 px-0 d-none d-md-block text-right">
+                        <img class="logo" src="assets/images/resort.jpg" alt="">
+                        <img class="vimg mt-2" src="assets/images/verified.png" alt="">
+                        <!-- <div class="verified mt-2"><span class="material-icons pr-0">check_circle</span> Verified</div> -->
+                    </div>
+
+                </div>
+
+                <div class="row mx-0">
+                    <div class="col-md-8 px-0">
+                        <div class="nearby mt-2">
+                            <h5>Nearby Tourist Places</h5>
+                            <div class="lists">
+                                <li><span class="material-icons pr-1">location_on</span>Kanjirakolly Waterfalls - 2 Km</li>
+                                <li><span class="material-icons pr-1">location_on</span>Aralam Wildlife Sanctuary - 22 Km</li>
+                                <li><span class="material-icons pr-1">location_on</span>Pazhassi Dam - 15 Km</li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 px-0">
+                        <div class="ratings mt-3">
+                            <h5>Reviews & Ratings</h5>
+                            <div class="number mt-2">
+                                <div class="rating mr-2">3.5 <span class="material-icons">star_rate</span></div>
+                                <div class="review"><span class="material-icons">person</span> 825 Reviews</div>
+                            </div>
+                            <div class="recommend mt-1">
+                                Recommended by 80% Guests
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

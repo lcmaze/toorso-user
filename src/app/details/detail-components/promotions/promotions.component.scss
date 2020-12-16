@@ -1,0 +1,25 @@
+.card {
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0px 6px 8px 0px #00000025;
+    transition: all .2s ease;
+    cursor: pointer;
+    img {
+        width: 100%;
+    }
+    .link {
+        color: #C62828;
+        font-family: 'Open Sans SB';
+    }
+    .time {
+        font-size: 14px;
+        color: #7e7e7e;
+    }
+}
+
+.card:hover {
+    transform: scale(1.02);
+    link {
+        text-decoration: underline;
+    }
+}

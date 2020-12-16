@@ -1,0 +1,33 @@
+<section class="modl">
+    <h3>Guests</h3>
+    <div class="detail mt-4">
+        <div class="row mx-0">
+            <div class="col-6 px-0 d-flex align-items-center">
+                <h6>Rooms</h6>
+            </div>
+            <div class="col-6 px-0 d-flex justify-content-end">
+                <app-counter value=1></app-counter>
+            </div>
+        </div>
+        <div class="row mx-0 mt-2">
+            <div class="col-6 px-0 d-flex align-items-center">
+                <h6>Adults</h6>
+            </div>
+            <div class="col-6 px-0 d-flex justify-content-end">
+                <app-counter value=1></app-counter>
+            </div>
+        </div>
+        <div class="row mx-0 mt-2">
+            <div class="col-6 px-0 d-flex align-items-center">
+                <h6>Children</h6>
+            </div>
+            <div class="col-6 px-0 d-flex justify-content-end">
+                <app-counter value=0></app-counter>
+            </div>
+        </div>
+    </div>
+    <div class="clos mt-4">
+        <button class="mr-2" mat-raised-button (click)="close()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="close()">Save</button>
+    </div>
+</section>

@@ -1,0 +1,25 @@
+section {
+    background-color: #fafafa;
+}
+
+.main {
+    display: flex;
+    .aside {
+        width: 320px;
+    }
+    .results {
+        width: calc(100% - 320px);
+    }
+}
+
+@media (max-width:1200px) {
+    .main {
+        display: unset;
+        .aside {
+            width: 100%;
+        }
+        .results {
+            width: 100%;
+        }
+    }
+}

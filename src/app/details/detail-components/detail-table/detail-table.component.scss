@@ -1,0 +1,29 @@
+.table {
+    tbody {
+        th {
+            color: #3d3d3d;
+            .mat-icon {
+                color: #C62828;
+                vertical-align: bottom;
+                margin-right: 10px;
+                font-size: 20px;
+            }
+        }
+        td {
+            color: #7e7e7e;
+            font-family: 'Open Sans SB';
+            li {
+                list-style: none;
+                mat-icon {
+                    font-size: 20px;
+                    vertical-align: middle;
+                    margin-right: 6px;
+                    color: #7e7e7e80;
+                }
+            }
+            a {
+                color: #C62828;
+            }
+        }
+    }
+}

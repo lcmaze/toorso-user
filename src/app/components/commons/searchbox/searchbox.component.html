@@ -1,0 +1,10 @@
+<div class="position-relative" style="height:100%">
+    <input type="text" [placeholder]="type" (keypress)="suggestionbox()">
+    <div class="suggestion" *ngIf="keypressed">
+        <li>Athirapilly Waterfalls</li>
+        <li>Chimmony Dam</li>
+        <li>River Bay Resort</li>
+        <li>Le Meridian</li>
+        <li>Grand Hyat</li>
+    </div>
+</div>

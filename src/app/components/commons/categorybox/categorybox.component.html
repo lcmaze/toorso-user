@@ -1,0 +1,9 @@
+<div class="position-relative w-100">
+    <button class="action-button w-100" (click)="class.open()" expand="block" fill="solid" color="primary">{{className}} <span class="material-icons">expand_more</span></button><br>
+    <mat-form-field class="class-select">
+        <mat-label>Class</mat-label>
+        <mat-select #class [(ngModel)]="className">
+            <mat-option *ngFor="let c of classes" [value]="c">{{c}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>

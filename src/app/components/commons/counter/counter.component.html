@@ -1,0 +1,15 @@
+<div class="counter">
+    <button mat-mini-fab color="primary" *ngIf="btn == 'fab'" (click)="sub()">
+        <mat-icon>remove</mat-icon>
+      </button>
+    <button mat-button *ngIf="btn == 'normal'" (click)="sub()">
+        <mat-icon>remove</mat-icon>
+      </button>
+    <span class="count">{{value}}</span>
+    <button mat-mini-fab color="primary" *ngIf="btn == 'fab'" (click)="add()">
+        <mat-icon>add</mat-icon>
+      </button>
+    <button mat-button *ngIf="btn == 'normal'" (click)="add()">
+        <mat-icon>add</mat-icon>
+      </button>
+</div>
