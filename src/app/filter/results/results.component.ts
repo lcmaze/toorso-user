@@ -8,7 +8,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  @Input('ids') ids : any;
+  @Input('data') data : any;
 
   // mySlideImages = ['assets/images/resort2.jpg', 'assets/images/resort2.jpg'];
   // mySlideOptions = { items: 1, dots: false, nav: false };

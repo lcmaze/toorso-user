@@ -13,6 +13,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -36,6 +37,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatSliderModule,
     MatTooltipModule,
     MatInputModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

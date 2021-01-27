@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="data">
     <div class="result-box">
         <div class="row mx-0">
             <div class="col-xl-3 px-0">
@@ -41,14 +41,15 @@
                 <div class="row mx-0">
                     <div class="col-md-10 px-0">
                         <div class="name">
-                            <h1>Kanmadam Resort</h1>
-                            <div class="grade py-1">
+                            <h1>{{data.vendor_name}}</h1>
+                            <!-- ratings -->
+                            <!-- <div class="grade py-1">
                                 <span class="material-icons">grade</span>
                                 <span class="material-icons">grade</span>
                                 <span class="material-icons">grade</span>
                                 <span class="material-icons">grade</span>
                                 <span class="material-icons">grade</span>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="location">
                             <span class="material-icons">location_on</span>

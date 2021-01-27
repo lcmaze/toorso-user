@@ -11,24 +11,10 @@
             <div class="aside">
                 <app-aside></app-aside>
             </div>
-            <div class="results pl-xl-4">
-                <div class="w-100 mb-3">
-                    <app-results ids="id1"></app-results>
-                </div>
-                <div class="w-100 mb-3">
-                    <app-results ids="id2"></app-results>
-                </div>
-                <div class="w-100 mb-3">
-                    <app-results ids="id3"></app-results>
-                </div>
-                <div class="w-100 mb-3">
-                    <app-results ids="id4"></app-results>
-                </div>
-                <div class="w-100 mb-3">
-                    <app-results ids="id5"></app-results>
-                </div>
-                <div class="w-100 mb-3">
-                    <app-results ids="id6"></app-results>
+            <div class="results pl-xl-4" *ngIf="vendors">
+                <h5>Total <strong>{{vendors.count}}</strong> results</h5>
+                <div class="w-100 mb-3" *ngFor="let v of vendors.rows; let i = index">
+                    <app-results [data]="v"></app-results>
                 </div>
             </div>
         </div>
