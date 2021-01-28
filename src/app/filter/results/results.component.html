@@ -53,12 +53,13 @@
                         </div>
                         <div class="location">
                             <span class="material-icons">location_on</span>
-                            <span class="pl-2">Kanjirakolly</span>,
-                            <span class="pl-2">Kannur</span>,
-                            <span class="pl-2">Kerala</span>.
+                            <span class="pl-2">{{data.city_info.city_name}}</span>,
+                            <span class="pl-2">{{data.city_info.states_info.state_name}}</span>,
+                            <span class="pl-2">{{data.city_info.states_info.country_info.country_name}}</span>.
                         </div>
                         <div class="caption mt-2">
-                            <h6>15 KM away from Kannur International Airport</h6>
+                            <h6>{{data.near_airport}}</h6>
+                            <h6>{{data.near_railway}}</h6>
                         </div>
                         <div class="features mt-3 pl-1">
                             <mat-chip-list>

@@ -11,15 +11,15 @@ export class FilterComponent implements OnInit {
   constructor(private mainData: MainService) { }
 
   ngOnInit() {
-    this.getDetails();
+    this.getDetails(1,3);
   }
 
   page: any = 1;
   limit: any;
   filters: any;
   vendors: any;
-  getDetails(){
-    this.mainData.get(`api/get-filter-results`).subscribe(data => {
+  getDetails(page: number, limit: number){
+    this.mainData.get(`api/get-filter-results?page=` + page + `&limit=` + limit).subscribe(data => {
       this.vendors = data;
     })
   }
