@@ -9,6 +9,7 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 export class ResultsComponent implements OnInit {
 
   @Input('data') data : any;
+  @Input('link') link : any;
 
   // mySlideImages = ['assets/images/resort2.jpg', 'assets/images/resort2.jpg'];
   // mySlideOptions = { items: 1, dots: false, nav: false };

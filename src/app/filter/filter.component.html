@@ -12,9 +12,9 @@
                 <app-aside></app-aside>
             </div>
             <div class="results pl-xl-4" *ngIf="vendors">
-                <h5>Total <strong>{{vendors.count}}</strong> results</h5>
+                <h6 class="mt-2 mb-3">Total <strong>{{vendors.count}}</strong> results</h6>
                 <div class="w-100 mb-3" *ngFor="let v of vendors.rows; let i = index">
-                    <app-results [data]="v"></app-results>
+                    <app-results [data]="v" link="/details"></app-results>
                 </div>
             </div>
         </div>
