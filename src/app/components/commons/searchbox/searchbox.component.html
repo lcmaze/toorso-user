@@ -1,5 +1,5 @@
 <div class="position-relative" style="height:100%">
-    <input type="text" [placeholder]="type" (keypress)="suggestionbox()">
+    <input type="text" [placeholder]="type" (keypress)="search($event)">
     <div class="suggestion" *ngIf="keypressed">
         <li>Athirapilly Waterfalls</li>
         <li>Chimmony Dam</li>

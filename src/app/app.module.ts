@@ -8,6 +8,7 @@ import { MainService } from './services/main.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from './components/material/material.module';
+import { MAT_DATE_LOCALE } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MaterialModule } from './components/material/material.module';
     MaterialModule
   ],
   providers: [
-    MainService
+    MainService,
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ],
   bootstrap: [AppComponent]
 })
