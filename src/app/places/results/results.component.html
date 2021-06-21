@@ -1,0 +1,84 @@
+<section>
+    <div class="result-box">
+        <div class="row mx-0">
+            <div class="col-xl-3 px-0">
+                <div class="gallery">
+                    <div [id]="ids" class="carousel slide" style=" height: 100%;min-height: 100%;max-height: 100%;" data-ride="carousel" data-interval="false">
+                        <div class="carousel-inner h100">
+                            <div class="carousel-item h100 active">
+                                <img src="assets/images/resort2.jpg" alt="...">
+                            </div>
+                            <div class="carousel-item h100">
+                                <img src="assets/images/resort2.jpg" alt="...">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" [href]="'#'+ids" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" [href]="'#'+ids" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 p-3 lnk" [routerLink]="link">
+                <div class="row mx-0">
+                    <div class="col-md-9 px-0">
+                        <div class="name">
+                            <h1>Athirapilly Waterfalls</h1>
+                            <div class="grade py-1">
+                                <span class="material-icons">grade</span>
+                                <span class="material-icons">grade</span>
+                                <span class="material-icons">grade</span>
+                                <span class="material-icons">grade</span>
+                                <span class="material-icons">grade</span>
+                            </div>
+                        </div>
+                        <div class="location">
+                            <span class="material-icons">location_on</span>
+                            <span class="pl-2">Chalakudy</span>,
+                            <span class="pl-2">Kerala</span>,
+                            <span class="pl-2">India</span>.
+                        </div>
+                        <div class="caption mt-2">
+                            <h6>15 Kms from Airport</h6>
+                            <h6>6 Kms from Railway Station</h6>
+                        </div>
+
+                        <div class="descX mt-2">
+                            <div><b>Category : </b>Waterfalls</div>
+                            <div><b>Timing : </b>10am - 7pm</div>
+                        </div>
+
+                        <div class="ratings mt-2">
+                            <h5>Reviews & Ratings</h5>
+                            <div class="number mt-2">
+                                <div class="rating mr-2">3.5 <span class="material-icons">star_rate</span></div>
+                                <div class="review"><span class="material-icons">person</span> 825 Reviews</div>
+                            </div>
+                        </div>
+
+                        <div class="facilities mt-2">
+                            <h5>Facilities</h5>
+                            <div class="icons">
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 px-0 d-none d-md-block text-right" style="border-radius: 4px;">
+                        <img class="logo" src="assets/images/resort.jpg" alt="">
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

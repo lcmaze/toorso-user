@@ -7,10 +7,11 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { CommonsModule } from '../components/commons/commons.module';
 import { MaterialModule } from '../components/material/material.module';
 import { AsideComponent } from './aside/aside.component';
+import { ResultsComponent } from './results/results.component';
 
 
 @NgModule({
-  declarations: [PlacesComponent, AsideComponent],
+  declarations: [PlacesComponent, AsideComponent, ResultsComponent],
   imports: [
     CommonModule,
     PlacesRoutingModule,
