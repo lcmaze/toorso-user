@@ -23,9 +23,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-9 p-3 lnk" [routerLink]="link">
+            <div class="col-xl-9 p-3 lnk">
                 <div class="row mx-0">
-                    <div class="col-md-9 px-0">
+                    <div class="col-md-9 px-0" [routerLink]="link">
                         <div class="name">
                             <h1>Athirapilly Waterfalls</h1>
                             <div class="grade py-1">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 px-0 d-none d-md-block text-right" style="border-radius: 4px;">
-                        <img class="logo" src="assets/images/resort.jpg" alt="">
+                        <img class="logo" [routerLink]="hotel" src="assets/images/resort.jpg" alt="">
                     </div>
 
                 </div>

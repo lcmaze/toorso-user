@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div style="background-color:#fafafa">
-    <div class="w-80">
+    <div class="w-80 pb-4">
         <div class="selected-filters py-3">
             <mat-chip-list>
                 <mat-chip>Beaches
@@ -20,8 +20,9 @@
                 <app-aside></app-aside>
             </div>
             <div class="results pl-xl-4">
-                <app-results></app-results>
+                <app-results link="/places/placedetails" hotel="/details"></app-results>
             </div>
         </div>
     </div>
+    <app-footer></app-footer>
 </div>

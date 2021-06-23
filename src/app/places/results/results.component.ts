@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  @Input('data') data: any;
+  @Input('hotel') hotel: any;
   @Input('link') link: any;
 
   constructor() { }

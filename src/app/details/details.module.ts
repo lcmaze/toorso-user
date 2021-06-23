@@ -15,8 +15,8 @@ import { PromotionsComponent } from './detail-components/promotions/promotions.c
 
 @NgModule({
   declarations: [
-    PriceComponent, 
-    InfoComponent,  
+    PriceComponent,
+    InfoComponent,
     DetailTableComponent,
     DetailSearchComponent,
     GalleryComponent,

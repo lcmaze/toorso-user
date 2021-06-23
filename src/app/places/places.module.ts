@@ -8,10 +8,11 @@ import { CommonsModule } from '../components/commons/commons.module';
 import { MaterialModule } from '../components/material/material.module';
 import { AsideComponent } from './aside/aside.component';
 import { ResultsComponent } from './results/results.component';
+import { PlacedetailsComponent } from './placedetails/placedetails.component';
 
 
 @NgModule({
-  declarations: [PlacesComponent, AsideComponent, ResultsComponent],
+  declarations: [PlacesComponent, AsideComponent, ResultsComponent, PlacedetailsComponent],
   imports: [
     CommonModule,
     PlacesRoutingModule,
