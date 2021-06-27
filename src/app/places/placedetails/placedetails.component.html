@@ -12,7 +12,157 @@
 
 <section class="bg-grey">
     <div class="w-80 py-5">
+        <div class="row">
+            <div class="col-lg-8 col-xl-7">
+                <div class="head">
+                    <div class="detail ml-0 mb-3">
+                        <div class="name">
+                            <h1>Munnar Resort</h1>
+                            <h6><span class="material-icons">location_on</span><span>Kanjirapilly</span>, <span>Kannur</span>, <span>Kerala</span></h6>
+                        </div>
+                    </div>
+                </div>
+                <app-gallery></app-gallery>
 
+                <div class="about py-3">
+                    <h5 class="heading pb-3 mt-4 mb-3">About Munnar Hotels & Resorts</h5>
+                    <p [ngClass]="{'more' : read_more, 'less' : !read_more}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis veritatis tenetur necessitatibus, est delectus minima! Maxime porro alias culpa laborum repellat ad explicabo facilis? Maxime soluta cupiditate libero rem, earum velit
+                        voluptatem similique obcaecati nobis vel sint blanditiis aperiam laudantium eius alias. Corrupti assumenda, illo pariatur ut officia sint. Nesciunt beatae voluptatem ipsam eius laborum ea temporibus quis laudantium quas illum corrupti
+                        <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis veritatis tenetur necessitatibus, est delectus minima! Maxime porro alias culpa laborum repellat ad explicabo facilis? Maxime soluta cupiditate libero rem,
+                        earum velit voluptatem similique obcaecati nobis vel sint blanditiis aperiam laudantium eius alias. Corrupti assumenda, illo pariatur ut officia sint. Nesciunt beatae voluptatem ipsam eius laborum ea temporibus quis laudantium
+                        quas illum corrupti
+                    </p>
+                    <button mat-stroked-button class="mb-3" (click)="readmore()">{{read_more ? 'Read Less' : 'Read More'}}</button>
+                    <app-detail-table></app-detail-table>
+                </div>
+
+                <h2 class="heading pb-3 mt-4 mb-3">Free Facilities</h2>
+                <div class="facilities">
+                    <div class="row mx-0">
+                        <div class="col-6 col-xl-4 px-0">
+                            <li><span class="filterfont">A</span> Wild Life Safari</li>
+                        </div>
+                        <div class="col-6 col-xl-4 px-0">
+                            <li><span class="filterfont">A</span> Wild Life Safari</li>
+                        </div>
+                        <div class="col-6 col-xl-4 px-0">
+                            <li><span class="filterfont">A</span> Wild Life Safari</li>
+                        </div>
+                        <div class="col-6 col-xl-4 px-0">
+                            <li><span class="filterfont">A</span> Wild Life Safari</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xl-5">
+                <h2 class="heading pb-3 mt-3 mb-3">Location</h2>
+                <iframe style="border-radius: 6px; overflow: hidden; box-shadow: 0px 3px 6px 0px #00000030;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15712.49456676906!2d77.05077023477828!3d10.088954010598753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07997b70000043%3A0x659ef4dbf458d7d8!2sMunnar%20Resorts%20Stay!5e0!3m2!1sen!2sin!4v1600946456439!5m2!1sen!2sin"
+                    width="100%" height="320" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+                <h2 class="heading pb-3 mt-5 mb-3">Reviews & Ratings</h2>
+                <div class="rating">
+                    <div class="row mx-0">
+                        <div class="col-12 col-md-6 col-lg-12 col-xl-5 p-3 px-5 d-flex justify-content-center justify-content-lg-start justify-content-lg-center justify-content-xl-start">
+                            <div class="tot">
+                                <div class="total">3.5 <span class="material-icons">star_rate</span> </div>
+                                <div class="total-foot">Based on <br><span>58,000</span> Reviews</div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-12 col-xl-7 p-3 d-flex align-items-center">
+                            <button mat-flat-button color="accent" class="review-btn p-2" (click)="writereview()">Write a Review!!!<br><span class="d-none d-md-block d-lg-none d-xl-block">Click Here</span></button>
+                        </div>
+                    </div>
+                    <hr class="my-0">
+                    <div class="row mx-0">
+                        <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                            <div class="part">
+                                <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
+                                <h5>Features</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                            <div class="part">
+                                <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
+                                <h5>Service Quality</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                            <div class="part">
+                                <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
+                                <h5>Value for Money</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                            <div class="part">
+                                <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
+                                <h5>Location</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-100">
+                    <app-comments></app-comments>
+                    <app-comments></app-comments>
+                    <app-comments></app-comments>
+                </div>
+
+                <div class="text-center">
+                    <button mat-flat-button color="primary" class="mt-3">View More Reviews</button>
+                </div>
+
+                <h2 class="heading pb-3 mt-5 mb-3">Video</h2>
+                <div class="video">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/LIBj3WC-9xo?start=2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+
+        <h2 class="heading pb-3 mt-5 mb-3">Nearby Hotels/Resorts/Homestays</h2>
+        <div class="row">
+            <div class="col-6 col-md-4 col-xl-3 p-3">
+                <div class="box" routerLink="/details">
+                    <img src="assets/images/resort2.jpg" alt="">
+                    <div class="px-2 py-2">
+                        <h2>Namala Homestay</h2>
+                        <h5>Distance : 2 KM</h5>
+                        <h5>Featuers : Water Reservoir</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3 p-3">
+                <div class="box" routerLink="/details">
+                    <img src="assets/images/resort2.jpg" alt="">
+                    <div class="px-2 py-2">
+                        <h2>Namala Homestay</h2>
+                        <h5>Distance : 2 KM</h5>
+                        <h5>Featuers : Water Reservoir</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3 p-3">
+                <div class="box" routerLink="/details">
+                    <img src="assets/images/resort2.jpg" alt="">
+                    <div class="px-2 py-2">
+                        <h2>Namala Homestay</h2>
+                        <h5>Distance : 2 KM</h5>
+                        <h5>Featuers : Water Reservoir</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-xl-3 p-3">
+                <div class="box" routerLink="/details">
+                    <img src="assets/images/resort2.jpg" alt="">
+                    <div class="px-2 py-2">
+                        <h2>Namala Homestay</h2>
+                        <h5>Distance : 2 KM</h5>
+                        <h5>Featuers : Water Reservoir</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

@@ -9,6 +9,7 @@ import { MaterialModule } from '../components/material/material.module';
 import { AsideComponent } from './aside/aside.component';
 import { ResultsComponent } from './results/results.component';
 import { PlacedetailsComponent } from './placedetails/placedetails.component';
+import { DetailsModule } from '../details/details.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { PlacedetailsComponent } from './placedetails/placedetails.component';
     PlacesRoutingModule,
     MaterialModule,
     CommonsModule,
-    OwlModule
+    OwlModule,
+    DetailsModule
   ]
 })
 export class PlacesModule { }

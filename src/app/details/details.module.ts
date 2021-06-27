@@ -29,6 +29,10 @@ import { PromotionsComponent } from './detail-components/promotions/promotions.c
     MaterialModule,
     CommonsModule,
     NgxGalleryModule
+  ],
+  exports: [
+    GalleryComponent,
+    DetailTableComponent
   ]
 })
 export class DetailsModule { }
