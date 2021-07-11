@@ -9,7 +9,7 @@
                     </div>
 
                     <div class="col-md-6 col-xl py-2 py-xl-3 px-2">
-                        <app-categorybox></app-categorybox>
+                        <app-categorybox (category)="categoryChange($event)"></app-categorybox>
                     </div>
 
                     <div class="col-md-6 col-xl py-2 py-xl-3 px-2" *ngIf="timeguest">

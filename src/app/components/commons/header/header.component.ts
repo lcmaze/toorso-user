@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { NgForm } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { MainService } from 'src/app/services/main.service';
 import { LoginComponent } from '../auth/login/login.component';
 import { RegisterComponent } from '../auth/register/register.component';
 
@@ -13,7 +16,7 @@ export class HeaderComponent implements OnInit {
   @Input('country') country: boolean = true;
   @Input ('isloggedin') isloggedin : boolean = false;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private mainData: MainService, private fAuth: AngularFireAuth) { }
 
   money : string[] =  ['₹ INR', '$ Dollar'];
   locations : any = [
@@ -27,7 +30,65 @@ export class HeaderComponent implements OnInit {
   selectedstate : string = this.locations[0].states[0];
   selectedflag: string = this.locations[0].flag;
 
+  userDetails: any;
   ngOnInit() {
+    this.mainData.userDetailsObservable.subscribe(data => {
+      this.userDetails = data;
+      console.log(this.userDetails);
+    })
+    this.getCountries();
+  }
+
+  logout(){
+    this.fAuth.signOut();
+    window.location.reload();
+  }
+
+  reset(){
+    const dialogRef = this.dialog.open(ResetDialogComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  selectCountry(country: any){
+    this.mainData.selectedCountry.next(country);
+    this.selectedcountry = country;
+    this.getStates(country.country_id);
+  }
+
+  // countries
+  countries: any;
+  getCountries(){
+    this.mainData.getCache(`api/get-countries`).subscribe(data => {
+      this.countries = data;
+      this.countries.forEach(country => {
+        if(country.country_id === 221) {
+          this.selectedcountry = country;
+          this.mainData.selectedCountry.next(country);
+          this.getStates(country.country_id);
+        }
+      })
+    })
+  }
+
+  // states 
+  states: any;
+  getStates(id: any){
+    this.mainData.getCache(`api/get-states?id=${id}`).subscribe(data => {
+      this.states = data.rows;
+      this.states.forEach(state => {
+        if(state.state_id === 4045) {
+          this.selectedstate = state;
+          this.mainData.selectedState.next(state);
+          // console.log(state);
+        }
+      })
+    })
   }
 
 
@@ -40,14 +101,16 @@ export class HeaderComponent implements OnInit {
     this.branchvisible = branchvisible;
     this.statelist = statelist;
     this.selectedflag = selectedflag;
-    console.log(this.selectedflag);
+    // console.log(this.selectedflag);
   }
 
   stateselect(selectedstate : string){
+    this.mainData.selectedState.next(selectedstate);
     this.selectedstate = selectedstate;
   }
 
-  login(): void {
+  loginModal(): void {
+    console.log("login modal!");
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '420px'
     });
@@ -59,12 +122,38 @@ export class HeaderComponent implements OnInit {
 
   signup(): void {
     const dialogRef = this.dialog.open(RegisterComponent, {
-      width: '640px'
+      width: '640px',
+      data: this.selectedstate
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
   }
 
+
+}
+
+@Component({
+  selector: 'reset-dialog',
+  templateUrl: 'reset-dialog.html',
+})
+export class ResetDialogComponent {
+
+  constructor(public dialogRef: MatDialogRef<ResetDialogComponent>, private fAuth: AngularFireAuth, private mainData: MainService){}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  resetPassword(form: NgForm){
+    if(form.valid){
+      this.fAuth.sendPasswordResetEmail(form.value.email).then(data => {
+        this.mainData.openToast("Reset Email Send!");
+        this.onNoClick();
+      }).catch(err => {
+        this.mainData.openToast(err.message);
+      })
+    }
+  }
 
 }

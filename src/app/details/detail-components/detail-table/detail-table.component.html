@@ -1,68 +1,81 @@
-<table class="table table-striped">
+<table class="table table-striped" *ngIf="data">
     <tbody>
-        <tr>
+        <tr *ngIf="data.vendor_star_level">
             <th width="200px">
                 <mat-icon>star_rate</mat-icon> Star Value</th>
-            <td>3 Star Resort</td>
+            <td>{{data.vendor_star_level}} Star Resort</td>
         </tr>
-        <tr>
+        <tr *ngIf="data.city_info">
             <th width="200px">
                 <mat-icon>location_on</mat-icon>Location</th>
-            <td>Kanjirapilly, Kannur, Kerala</td>
+            <td>
+                <span>{{data.city_info.city_name}}</span>, 
+                <span>{{data.city_info.states_info.state_name}}</span>, 
+                <span>{{data.city_info.states_info.country_info.country_name}}</span>
+            </td>
         </tr>
-        <tr>
+        <tr *ngIf="data.near_airport || data.near_railway">
             <th width="200px">
                 <mat-icon>near_me</mat-icon>Near by</th>
             <td>
-                <li>15 KM away from Kannur International Airport</li>
-                <li>10 KM away from Kannur Railway Station</li>
+                <li>{{data.near_airport}}</li>
+                <li>{{data.near_railway}}</li>
             </td>
         </tr>
-        <tr>
+        <tr *ngIf="data.vendor_phone">
             <th width="200px">
                 <mat-icon>call</mat-icon>Phone</th>
-            <td><a href="tel:+18475555555">+91 974787896</a></td>
+            <td><a [href]="'tel:' + data.vendor_phone">{{data.vendor_phone}}</a></td>
         </tr>
-        <tr>
+        <tr *ngIf="data.vendor_address_one || data.vendor_address_two">
             <th width="200px">
                 <mat-icon>home</mat-icon>Address</th>
-            <td>Kanjirakkolly, Payyavoor PO, Kannur</td>
+            <td>{{data.vendor_address_one}}, {{data.vendor_address_two}}</td>
         </tr>
-        <tr>
+        <tr *ngIf="data.vendor_working_days || data.vendor_working_hours">
             <th width="200px">
                 <mat-icon>update</mat-icon>Working</th>
-            <td>Mon - Sat | 08:00 am to 11:00 pm</td>
+            <td>{{data.vendor_working_days}} | {{data.vendor_working_hours}}</td>
         </tr>
-        <tr>
+        <tr *ngIf="data.vendor_keywords">
             <th width="200px">
                 <mat-icon>dns</mat-icon>Our Specialities</th>
-            <td>Resort, Swimming Pool, Trekking, Camping</td>
+            <td>{{data.vendor_keywords}}</td>
         </tr>
-        <tr>
+        <tr *ngIf="data.facebook || data.twitter || data.linkedin || data.instagram">
             <th width="200px">
                 <mat-icon>group</mat-icon>Social</th>
             <td>
-                <li>
+                <li *ngIf="data.facebook">
                     <mat-icon>facebook</mat-icon>
-                    <a href="fb.com">Facebook</a>
+                    <a [href]="data.facebook">Facebook</a>
                 </li>
-                <li>
-                    <mat-icon>facebook</mat-icon>
-                    <a href="fb.com">Twitter</a>
+                <li *ngIf="data.twitter">
+                    <i class="fa fa-twitter" aria-hidden="true" style="margin-right: 6px;"></i>
+                    <a [href]="data.twitter">Twitter</a>
+                </li>
+                <li *ngIf="data.linkedin">
+                    <i class="fa fa-linkedin" aria-hidden="true" style="margin-right: 6px;"></i>
+                    <a [href]="data.linkedin">LinkedIn</a>
+                </li>
+                <li *ngIf="data.instagram">
+                    <!-- <mat-icon>instagram</mat-icon> -->
+                    <i class="fa fa-instagram" aria-hidden="true" style="margin-right: 6px;"></i>
+                    <a [href]="data.instagram">Instagram</a>
                 </li>
             </td>
         </tr>
-        <tr>
+        <tr *ngIf="data.vendor_email || data.vendor_website">
             <th width="200px">
                 <mat-icon>touch_app</mat-icon>Contact</th>
             <td>
-                <li>
+                <li *ngIf="data.vendor_website">
                     <mat-icon>language</mat-icon>
-                    <a href="www.google.com">www.google.com</a>
+                    <a [href]="data.vendor_website">{{data.vendor_website}}</a>
                 </li>
-                <li>
+                <li *ngIf="data.vendor_email">
                     <mat-icon>email</mat-icon>
-                    <a href="mailto:name@email.com">abcresort@gmail.com</a>
+                    <a [href]="'mailto:' + data.vendor_email">{{data.vendor_email}}</a>
                 </li>
             </td>
         </tr>

@@ -1,9 +1,10 @@
 <div class="position-relative w-100">
-    <button class="action-button w-100" (click)="class.open()" expand="block" fill="solid" color="primary">{{className}} <span class="material-icons">expand_more</span></button><br>
+    <button class="action-button w-100" (click)="class.open()" expand="block" fill="solid" color="primary">{{className.m_category_name}} <span class="material-icons">expand_more</span></button><br>
     <mat-form-field class="class-select">
         <mat-label>Class</mat-label>
-        <mat-select #class [(ngModel)]="className">
-            <mat-option *ngFor="let c of classes" [value]="c">{{c}}</mat-option>
+        <mat-select #class [(ngModel)]="className" (selectionChange)="selectCategory($event)">
+            <!-- <mat-option [value]="{m_category_id:0, m_category_name: 'all'}">All</mat-option> -->
+            <mat-option *ngFor="let c of categories" [value]="c">{{c.m_category_name}}</mat-option>
         </mat-select>
     </mat-form-field>
 </div>

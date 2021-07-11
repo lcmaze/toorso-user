@@ -1,61 +1,6 @@
 <section>
     <div class="head mb-1">
-        <span class="filterfont pr-3">y</span>
-        <h4>Hotel, Resort & Homestay</h4>
-    </div>
-
-    <div class="filter-box mb-1">
-        <a>Sort By Subcategories</a>
-        <div class="contents">
-            <div class="res-main">
-                <label class="customcheck">Hotel Apartments <span class="count">(450)</span>
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck">Hotel Apartments <span class="count">(450)</span>
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck">Hotel Apartments <span class="count">(450)</span>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck">Hotel Apartments <span class="count">(450)</span>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck">Hotel Apartments <span class="count">(450)</span>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck">Hotel Apartments <span class="count">(450)</span>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck">Hotel Apartments <span class="count">(450)</span>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck">Hotel Apartments <span class="count">(450)</span>
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-            </div>
-        </div>
+        <h4>{{selectedMainCategory.m_category_name}}</h4>
     </div>
 
     <div class="filter-box mb-1">
@@ -65,58 +10,60 @@
         </div>
     </div>
 
-    <div class="filter-box mb-1">
-        <a>Sort By Facilities</a>
+    <div class="filter-box mb-1" *ngIf="sub_categories && sub_categories.length > 0">
+        <a>Sort By Sub Category</a>
         <div class="contents">
-            <div class="res-main">
-                <label class="customcheck my-4px"><span class="filterfont pr-2">A</span> Hotel Apartments 
-                        <input type="checkbox">
-                        <span class="checkmark" style="top: 5px;"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck my-4px"><span class="filterfont pr-2">A</span> Hotel Apartments 
-                        <input type="checkbox">
-                        <span class="checkmark" style="top: 5px;"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck my-4px"><span class="filterfont pr-2">A</span> Hotel Apartments 
-                        <input type="checkbox">
-                        <span class="checkmark" style="top: 5px;"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck my-4px"><span class="filterfont pr-2">A</span> Hotel Apartments 
-                        <input type="checkbox">
-                        <span class="checkmark" style="top: 5px;"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck my-4px"><span class="filterfont pr-2">A</span> Hotel Apartments 
-                        <input type="checkbox">
-                        <span class="checkmark" style="top: 5px;"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck my-4px"><span class="filterfont pr-2">A</span> Hotel Apartments 
-                        <input type="checkbox">
-                        <span class="checkmark" style="top: 5px;"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck my-4px"><span class="filterfont pr-2">A</span> Hotel Apartments 
-                        <input type="checkbox">
-                        <span class="checkmark" style="top: 5px;"></span>
-                    </label>
-            </div>
-            <div class="res-main">
-                <label class="customcheck my-4px"><span class="filterfont pr-2">A</span> Hotel Apartments 
-                        <input type="checkbox">
-                        <span class="checkmark" style="top: 5px;"></span>
-                    </label>
+            <div class="res-main" *ngFor="let f of sub_categories; let i = index">
+                <label class="customcheck">
+                    {{f.category_name}} <span class="count"></span>
+                    <input type="checkbox" (change)="selectCategory($event, i)" [value]="f.category_id" [(checked)]="f.checked">
+                    <span class="checkmark"></span>
+                </label>
             </div>
         </div>
     </div>
+
+    <div class="filter-box mb-1" *ngIf="facilities && facilities.length > 0">
+        <a>Sort By Facilities</a>
+        <div class="contents">
+            <div class="res-main" *ngFor="let f of facilities; let i = index">
+                <label class="customcheck">
+                    <span class="filterfont mr-sm-1">{{f.icon}}</span> 
+                    {{f.facility_name}} <span class="count"></span>
+                    <input type="checkbox" (change)="selectFacility($event, i)" [value]="f.facility_id" [(checked)]="f.checked">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-box mb-1" *ngIf="foods && foods.length > 0">
+        <a>Sort By Food</a>
+        <div class="contents">
+            <div class="res-main" *ngFor="let f of foods; let i = index">
+                <label class="customcheck">
+                    <span class="filterfont mr-sm-1">{{f.icon}}</span>
+                    {{f.food_name}} <span class="count"></span>
+                    <input type="checkbox" (change)="selectFood($event, i)" [value]="f.food_id" [(checked)]="f.checked">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-box mb-1" *ngIf="transportations && transportations.length > 0">
+        <a>Sort By Transportation</a>
+        <div class="contents">
+            <div class="res-main" *ngFor="let t of transportations; let i = index">
+                <label class="customcheck">
+                    <span class="filterfont mr-sm-1">{{f.icon}}</span>
+                    {{t.transportation_name}} <span class="count"></span>
+                    <input type="checkbox" (change)="selectTransportation($event, i)" [value]="t.transportation_id" [(checked)]="t.checked">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
 
 </section>

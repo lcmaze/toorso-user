@@ -1,305 +1,290 @@
 <app-header [country]=true [isloggedin]=true></app-header>
 <app-search [country]=false [timeguest]=false></app-search>
 
-<section class="bg-blue">
-    <div class="w-80">
-        <ol class="breadcrumb px-2 py-3">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Resorts & Homestays</a></li>
-            <li><a href="#">Munnar Resort</a></li>
-        </ol>
-    </div>
-</section>
-
-<section class="bg-grey">
-    <div class="w-80 py-5">
-        <div class="row">
-            <div class="col-lg-8 col-xl-7">
-                <div class="head p-md-2">
-                    <div class="logo">
-                        <img class="icon" src="assets/images/resort.jpg" alt="">
-                    </div>
-                    <div class="detail">
-                        <div class="name">
-                            <h1>Munnar Resort</h1>
-                            <h6><span class="material-icons">location_on</span><span>Kanjirapilly</span>, <span>Kannur</span>, <span>Kerala</span></h6>
-                        </div>
-                        <div class="starrating">
-                            <div class="score">
-                                4.4
-                            </div>
-                            <div class="right">
-                                <div class="stars">
-                                    <div class="grey-s">
-                                        <span class="material-icons">grade</span>
-                                        <span class="material-icons">grade</span>
-                                        <span class="material-icons">grade</span>
-                                        <span class="material-icons">grade</span>
-                                        <span class="material-icons">grade</span>
-                                    </div>
-                                    <div class="red-s" style="width: 50%;">
-                                        <span class="material-icons">grade</span>
-                                        <span class="material-icons">grade</span>
-                                        <span class="material-icons">grade</span>
-                                        <span class="material-icons">grade</span>
-                                        <span class="material-icons">grade</span>
-                                    </div>
-                                </div>
-                                <div class="review"><span class="material-icons">person</span> 825 Reviews</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mx-0">
-                    <div class="col-md-2 px-0 mt-4">
-                        <img style="max-width: 120px;width:100%" src="assets/images/verified.png" alt="">
-                    </div>
-                    <div class="col-md-10 px-0 pl-md-3 mt-4">
-                        <mat-chip-list>
-                            <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Cancellation</mat-chip>
-                            <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Tour Guide</mat-chip>
-                            <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Pickup & Drop</mat-chip>
-                            <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Breakfast, Lunch & Dinner</mat-chip>
-                        </mat-chip-list>
-                    </div>
-                </div>
-
-                <div class="about py-3">
-                    <h5 class="heading pb-3 mt-4 mb-3">About Munnar Hotels & Resorts</h5>
-                    <p [ngClass]="{'more' : read_more, 'less' : !read_more}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis veritatis tenetur necessitatibus, est delectus minima! Maxime porro alias culpa laborum repellat ad explicabo facilis? Maxime soluta cupiditate libero rem, earum velit
-                        voluptatem similique obcaecati nobis vel sint blanditiis aperiam laudantium eius alias. Corrupti assumenda, illo pariatur ut officia sint. Nesciunt beatae voluptatem ipsam eius laborum ea temporibus quis laudantium quas illum corrupti
-                        <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis veritatis tenetur necessitatibus, est delectus minima! Maxime porro alias culpa laborum repellat ad explicabo facilis? Maxime soluta cupiditate libero rem,
-                        earum velit voluptatem similique obcaecati nobis vel sint blanditiis aperiam laudantium eius alias. Corrupti assumenda, illo pariatur ut officia sint. Nesciunt beatae voluptatem ipsam eius laborum ea temporibus quis laudantium
-                        quas illum corrupti
-                    </p>
-                    <button mat-stroked-button class="mb-3" (click)="readmore()">{{read_more ? 'Read Less' : 'Read More'}}</button>
-                    <app-detail-table></app-detail-table>
-                </div>
-
-                <h2 class="heading pb-3 mt-4 mb-3">Free Facilities</h2>
-                <div class="facilities">
-                    <div class="row mx-0">
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="heading pb-3 mt-4 mb-3">Gallery</h2>
-                <app-gallery></app-gallery>
-
-                <h2 class="heading pb-3 mt-4 mb-3">Available Facilities <span>(Additional Cost Applicable)</span></h2>
-                <div class="facilities">
-                    <div class="row mx-0">
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="heading pb-3 mt-4 mb-3">Transportation Facilities <span>(Additional Cost Applicable)</span></h2>
-                <div class="facilities">
-                    <div class="row mx-0">
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 class="heading pb-3 mt-4 mb-3">Food Facilities <span>(Additional Cost Applicable)</span></h2>
-                <div class="facilities">
-                    <div class="row mx-0">
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>
-                        <div class="col-6 col-xl-4 px-0">
-                            <li><span class="filterfont">A</span> Wild Life Safari</li>
-                        </div>;
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-xl-5">
-                <div class="p-2 mb-3">
-                    <app-promotions></app-promotions>
-                </div>
-                <app-detail-search></app-detail-search>
-                <div class="p-2">
-                    <div class="res mt-4 mb-3">Room Availablity <span>(4)</span> </div>
-                    <div class="price">
-                        <li>
-                            <div class="row mx-0">
-                                <div class="col-8 p-3">
-                                    <h5 class="cat-name">Ordianary Room</h5>
-                                    <div class="type"><span class="material-icons">fiber_manual_record</span> Non AC</div>
-                                    <div class="type"><span class="material-icons">fiber_manual_record</span> Single Bed</div>
-                                </div>
-                                <div class="col-4 p-3">
-                                    <div class="offer"><span>₹ 1400</span> 5% Discount</div>
-                                    <h5 class="amount">₹ 7,600</h5>
-                                    <h6 class="per-day">Per Day</h6>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="disabled">
-                            <div class="row mx-0">
-                                <div class="col-8 p-3">
-                                    <h5 class="cat-name">Ordianary Room</h5>
-                                    <div class="type"><span class="material-icons">fiber_manual_record</span> Non AC</div>
-                                    <div class="type"><span class="material-icons">fiber_manual_record</span> Single Bed</div>
-                                </div>
-                                <div class="col-4 p-3">
-                                    <div class="offer"><span>₹ 1400</span> 5% Discount</div>
-                                    <h5 class="amount">₹ 7,600</h5>
-                                    <h6 class="per-day">Per Day</h6>
-                                </div>
-                            </div>
-                        </li>
-                    </div>
-                    <button mat-flat-button class="change mt-3 py-2" routerLink="/details/price" color="primary">More Info / Proceed to Choose</button>
-                </div>
-
-                <h2 class="heading pb-3 mt-5 mb-3">Location</h2>
-                <iframe style="border-radius: 6px; overflow: hidden; box-shadow: 0px 3px 6px 0px #00000030;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15712.49456676906!2d77.05077023477828!3d10.088954010598753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b07997b70000043%3A0x659ef4dbf458d7d8!2sMunnar%20Resorts%20Stay!5e0!3m2!1sen!2sin!4v1600946456439!5m2!1sen!2sin"
-                    width="100%" height="320" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
-                <h2 class="heading pb-3 mt-5 mb-3">Reviews & Ratings</h2>
-                <div class="rating">
-                    <div class="row mx-0">
-                        <div class="col-12 col-md-6 col-lg-12 col-xl-5 p-3 px-5 d-flex justify-content-center justify-content-lg-start justify-content-lg-center justify-content-xl-start">
-                            <div class="tot">
-                                <div class="total">3.5 <span class="material-icons">star_rate</span> </div>
-                                <div class="total-foot">Based on <br><span>58,000</span> Reviews</div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-6 col-lg-12 col-xl-7 p-3 d-flex align-items-center">
-                            <button mat-flat-button color="accent" class="review-btn p-2" (click)="writereview()">Write a Review!!!<br><span class="d-none d-md-block d-lg-none d-xl-block">Click Here</span></button>
-                        </div>
-                    </div>
-                    <hr class="my-0">
-                    <div class="row mx-0">
-                        <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
-                            <div class="part">
-                                <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
-                                <h5>Features</h5>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
-                            <div class="part">
-                                <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
-                                <h5>Service Quality</h5>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
-                            <div class="part">
-                                <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
-                                <h5>Value for Money</h5>
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
-                            <div class="part">
-                                <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
-                                <h5>Location</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-100">
-                    <app-comments></app-comments>
-                    <app-comments></app-comments>
-                    <app-comments></app-comments>
-                </div>
-
-                <div class="text-center">
-                    <button mat-flat-button color="primary" class="mt-3">View More Reviews</button>
-                </div>
-
-                <h2 class="heading pb-3 mt-5 mb-3">Video</h2>
-                <div class="video">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/LIBj3WC-9xo?start=2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
+<ng-container *ngIf="vendor">
+    <section class="bg-blue">
+        <div class="w-80">
+            <ol class="breadcrumb px-2 py-3">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Resorts & Homestays</a></li>
+                <li><a href="#">{{vendor.vendor_name}}</a></li>
+            </ol>
         </div>
+    </section>
+    
+    <section class="bg-grey">
+        <div class="w-80 py-5">
+            <div class="row">
+                <div class="col-lg-8 col-xl-7">
+                    <div class="head p-md-2">
+                        <div class="logo">
+                            <img class="icon" [src]="cdnLink + 'vendors/' + vendor.vendor_logo" [alt]="vendor.vendor_name">
+                        </div>
+                        <div class="detail">
+                            <div class="name">
+                                <h1>{{vendor.vendor_name}}</h1>
+                                <h6><span class="material-icons">location_on</span><span>{{vendor.city_info.city_name}}</span>, 
+                                    <span>{{vendor.city_info.states_info.state_name}}</span>, 
+                                    <span>{{vendor.city_info.states_info.country_info.country_name}}</span></h6>
+                            </div>
+                            <div class="starrating">
+                                <div class="score">
+                                    4.4
+                                </div>
+                                <div class="right">
+                                    <div class="stars">
+                                        <div class="grey-s">
+                                            <span class="material-icons">grade</span>
+                                            <span class="material-icons">grade</span>
+                                            <span class="material-icons">grade</span>
+                                            <span class="material-icons">grade</span>
+                                            <span class="material-icons">grade</span>
+                                        </div>
+                                        <div class="red-s" style="width: 50%;">
+                                            <span class="material-icons">grade</span>
+                                            <span class="material-icons">grade</span>
+                                            <span class="material-icons">grade</span>
+                                            <span class="material-icons">grade</span>
+                                            <span class="material-icons">grade</span>
+                                        </div>
+                                    </div>
+                                    <div class="review"><span class="material-icons">person</span> 825 Reviews</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row mx-0">
+                        <div class="col-md-2 px-0 mt-4" *ngIf="vendor.vendor.membership.is_verified">
+                            <img style="max-width: 120px;width:100%" src="assets/images/verified.png" alt="">
+                        </div>
+                        <div class="col-md-10 px-0 pl-md-3 mt-4">
+                            <mat-chip-list *ngIf="vendor.vendor_keywords">
+                                <mat-chip class="px-2 py-0" style="min-height: 29px;text-transform: capitalize;" color="accent" selected *ngFor="let t of vendor.vendor_keywords.split(',')">{{t}}</mat-chip>
+                            </mat-chip-list>
+                        </div>
+                    </div>
+    
+                    <div class="about py-3">
+                        <h5 class="heading pb-3 mt-4 mb-3">About {{vendor.vendor_name}}</h5>
+                        <p [ngClass]="{'more' : read_more, 'less' : !read_more}">
+                            {{vendor.vendor_desc}}
+                        </p>
+                        <button mat-stroked-button class="mb-3" (click)="readmore()">{{read_more ? 'Read Less' : 'Read More'}}</button>
+                        <app-detail-table [data]="vendor"></app-detail-table>
+                    </div>
+    
+                    <h2 class="heading pb-3 mt-4 mb-3">Free Facilities</h2>
+                    <div class="facilities">
+                        <div class="row mx-0">
+                            <ng-container *ngFor="let f of vendor.branch_facilities">
+                                <div class="col-6 col-xl-4 px-0" *ngIf="f.facility_type === 'free'">
+                                    <li><span class="filterfont">{{f.facility.icon}}</span> {{f.facility.facility_name}}</li>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngFor="let f of vendor.branch_transportations">
+                                <div class="col-6 col-xl-4 px-0" *ngIf="f.transportation_type === 'free'">
+                                    <li><span class="filterfont">{{f.transportation_facility.icon}}</span> {{f.transportation_facility.transportation_name}}</li>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngFor="let f of vendor.branch_foods">
+                                <div class="col-6 col-xl-4 px-0" *ngIf="f.food_type === 'free'">
+                                    <li><span class="filterfont">{{f.food_arrangement.icon}}</span> {{f.food_arrangement.food_name}}</li>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+    
+                    <ng-container *ngIf="vendor.branch_images && vendor.branch_images.length > 0">
+                        <h2 class="heading pb-3 mt-4 mb-3">Gallery</h2>
+                        <app-gallery [data]="vendor.branch_images"></app-gallery>
+                    </ng-container>
+    
+                    <h2 class="heading pb-3 mt-4 mb-3">Available Facilities <span>(Additional Cost Applicable)</span></h2>
+                    <div class="facilities">
+                        <div class="row mx-0">
+                            <ng-container *ngFor="let f of vendor.branch_facilities">
+                                <div class="col-6 col-xl-4 px-0" *ngIf="f.facility_type != 'free'">
+                                    <li><span class="filterfont">{{f.facility.icon}}</span> {{f.facility.facility_name}}</li>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+    
+                    <h2 class="heading pb-3 mt-4 mb-3">Transportation Facilities <span>(Additional Cost Applicable)</span></h2>
+                    <div class="facilities">
+                        <div class="row mx-0">
+                            <ng-container *ngFor="let f of vendor.branch_transportations">
+                                <div class="col-6 col-xl-4 px-0" *ngIf="f.transportation_type != 'free'">
+                                    <li><span class="filterfont">{{f.transportation_facility.icon}}</span> {{f.transportation_facility.transportation_name}}</li>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+    
+                    <h2 class="heading pb-3 mt-4 mb-3">Food Facilities <span>(Additional Cost Applicable)</span></h2>
+                    <div class="facilities">
+                        <div class="row mx-0">
+                            <ng-container *ngFor="let f of vendor.branch_foods">
+                                <div class="col-6 col-xl-4 px-0" *ngIf="f.food_type != 'free'">
+                                    <li><span class="filterfont">{{f.food_arrangement.icon}}</span> {{f.food_arrangement.food_name}}</li>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-5">
+                    <div class="p-2 mb-3">
+                        <app-promotions *ngIf="vendor.product_promotion" [data]="vendor.product_promotion"></app-promotions>
+                    </div>
+                    <app-detail-search></app-detail-search>
+                    <div class="p-2" *ngIf="vendor.vendor_products && vendor.vendor_products.length > 0">
+                        <div class="res mt-4 mb-3">Room Availablity <span>({{vendor.vendor_products.length}})</span> </div>
+                        <div class="price">
+                            <li *ngFor="let p of vendor.vendor_products;let i = index">
+                                <div class="row mx-0">
+                                    <div class="col-8 p-3">
+                                        <h5 class="cat-name">{{p.room_type}}</h5>
+                                        <ng-container *ngIf="p.highlighted_features">
+                                            <div class="type" *ngFor="let f of p.highlighted_features.split(',')"><span class="material-icons">fiber_manual_record</span> {{f}}</div>
+                                        </ng-container>
+                                    </div>
+                                    <div class="col-4 p-3">
+                                        <div class="offer"><span>₹ 1400</span> 5% Discount</div>
+                                        <h5 class="amount">₹ 7,600</h5>
+                                        <h6 class="per-day">Per Day</h6>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- <li class="disabled">
+                                <div class="row mx-0">
+                                    <div class="col-8 p-3">
+                                        <h5 class="cat-name">Ordianary Room</h5>
+                                        <div class="type"><span class="material-icons">fiber_manual_record</span> Non AC</div>
+                                        <div class="type"><span class="material-icons">fiber_manual_record</span> Single Bed</div>
+                                    </div>
+                                    <div class="col-4 p-3">
+                                        <div class="offer"><span>₹ 1400</span> 5% Discount</div>
+                                        <h5 class="amount">₹ 7,600</h5>
+                                        <h6 class="per-day">Per Day</h6>
+                                    </div>
+                                </div>
+                            </li> -->
+                        </div>
+                        <button mat-flat-button class="change mt-3 py-2" routerLink="/details/price" color="primary">More Info / Proceed to Choose</button>
+                    </div>
+    
+                    <ng-container *ngIf="mapLink">
+                        <h2 class="heading pb-3 mt-5 mb-3" >Location</h2>
+                        <iframe [src]="mapLink" frameborder="0" 
+                        style="border-radius: 6px; overflow: hidden; box-shadow: 0px 3px 6px 0px #00000030;" width="100%" height="320"></iframe>
+                    </ng-container>
 
-        <h2 class="heading pb-3 mt-5 mb-3">Nearby Tourist Attractions</h2>
-        <div class="row">
-            <div class="col-6 col-md-4 col-xl-3 p-3">
-                <div class="box">
-                    <img src="assets/images/resort2.jpg" alt="">
-                    <div class="px-2 py-2">
-                        <h2>Kanjirakolly Waterfalls</h2>
-                        <h5>Distance : 2 KM</h5>
-                        <h5>Category : Waterfalls</h5>
+                    <h2 class="heading pb-3 mt-5 mb-3">Reviews & Ratings</h2>
+                    <div class="rating">
+                        <div class="row mx-0">
+                            <div class="col-12 col-md-6 col-lg-12 col-xl-5 p-3 px-5 d-flex justify-content-center justify-content-lg-start justify-content-lg-center justify-content-xl-start">
+                                <div class="tot">
+                                    <div class="total">3.5 <span class="material-icons">star_rate</span> </div>
+                                    <div class="total-foot">Based on <br><span>58,000</span> Reviews</div>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-md-6 col-lg-12 col-xl-7 p-3 d-flex align-items-center">
+                                <button mat-flat-button color="accent" class="review-btn p-2" (click)="writereview()">Write a Review!!!<br><span class="d-none d-md-block d-lg-none d-xl-block">Click Here</span></button>
+                            </div>
+                        </div>
+                        <hr class="my-0">
+                        <div class="row mx-0">
+                            <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                                <div class="part">
+                                    <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
+                                    <h5>Features</h5>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                                <div class="part">
+                                    <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
+                                    <h5>Service Quality</h5>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                                <div class="part">
+                                    <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
+                                    <h5>Value for Money</h5>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                                <div class="part">
+                                    <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
+                                    <h5>Location</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="w-100">
+                        <app-comments></app-comments>
+                        <app-comments></app-comments>
+                        <app-comments></app-comments>
+                    </div>
+    
+                    <div class="text-center">
+                        <button mat-flat-button color="primary" class="mt-3">View More Reviews</button>
+                    </div>
+    
+                    <h2 class="heading pb-3 mt-5 mb-3">Video</h2>
+                    <div class="video" *ngIf="youtubeLink">
+                        <iframe width="100%" height="315" [src]="youtubeLink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-xl-3 p-3">
-                <div class="box">
-                    <img src="assets/images/resort2.jpg" alt="">
-                    <div class="px-2 py-2">
-                        <h2>Kanjirakolly Waterfalls</h2>
-                        <h5>Distance : 2 KM</h5>
-                        <h5>Category : Waterfalls</h5>
+    
+            <h2 class="heading pb-3 mt-5 mb-3">Nearby Tourist Attractions</h2>
+            <div class="row">
+                <div class="col-6 col-md-4 col-xl-3 p-3">
+                    <div class="box">
+                        <img src="assets/images/resort2.jpg" alt="">
+                        <div class="px-2 py-2">
+                            <h2>Kanjirakolly Waterfalls</h2>
+                            <h5>Distance : 2 KM</h5>
+                            <h5>Category : Waterfalls</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-4 col-xl-3 p-3">
-                <div class="box">
-                    <img src="assets/images/resort2.jpg" alt="">
-                    <div class="px-2 py-2">
-                        <h2>Kanjirakolly Waterfalls</h2>
-                        <h5>Distance : 2 KM</h5>
-                        <h5>Category : Waterfalls</h5>
+                <div class="col-6 col-md-4 col-xl-3 p-3">
+                    <div class="box">
+                        <img src="assets/images/resort2.jpg" alt="">
+                        <div class="px-2 py-2">
+                            <h2>Kanjirakolly Waterfalls</h2>
+                            <h5>Distance : 2 KM</h5>
+                            <h5>Category : Waterfalls</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-4 col-xl-3 p-3">
-                <div class="box">
-                    <img src="assets/images/resort2.jpg" alt="">
-                    <div class="px-2 py-2">
-                        <h2>Kanjirakolly Waterfalls</h2>
-                        <h5>Distance : 2 KM</h5>
-                        <h5>Category : Waterfalls</h5>
+                <div class="col-6 col-md-4 col-xl-3 p-3">
+                    <div class="box">
+                        <img src="assets/images/resort2.jpg" alt="">
+                        <div class="px-2 py-2">
+                            <h2>Kanjirakolly Waterfalls</h2>
+                            <h5>Distance : 2 KM</h5>
+                            <h5>Category : Waterfalls</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-xl-3 p-3">
+                    <div class="box">
+                        <img src="assets/images/resort2.jpg" alt="">
+                        <div class="px-2 py-2">
+                            <h2>Kanjirakolly Waterfalls</h2>
+                            <h5>Distance : 2 KM</h5>
+                            <h5>Category : Waterfalls</h5>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</ng-container>
 
 <app-footer></app-footer>

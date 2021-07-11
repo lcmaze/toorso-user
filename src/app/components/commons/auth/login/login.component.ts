@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { MainService } from 'src/app/services/main.service';
 import { ForgotComponent } from '../forgot/forgot.component';
 import { RegisterComponent } from '../register/register.component';
 
@@ -10,9 +13,13 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private mainData: MainService, private firebase: FirebaseService, private fb: FormBuilder) { }
 
+  loginForm: FormGroup;
+  submitBtnName: string = 'Login';
+  
   ngOnInit() {
+    this.setLoginForm();
   }
   
   close(): void {
@@ -37,5 +44,29 @@ export class LoginComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  setLoginForm(): void {
+    this.loginForm = this.fb.group({
+      'email': [null, Validators.compose([Validators.required, Validators.email])],
+      'password': [null, Validators.compose([Validators.minLength(5), Validators.maxLength(50), Validators.required])]
+    })
+  }
+
+  async login(){
+    if(this.loginForm.value && this.loginForm.valid){
+      this.submitBtnName = 'Please wait...';
+      let result = await this.firebase.login(this.loginForm.value);
+      if(result && result['status'] === true){
+        this.dialog.closeAll();
+        this.loginForm.reset();
+      }else{
+        this.mainData.showToast(result['message']);
+        this.submitBtnName = 'Login';
+      }
+    }
+    else{
+      this.loginForm.markAllAsTouched();
+    }
   }
 }

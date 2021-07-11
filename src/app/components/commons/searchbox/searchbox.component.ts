@@ -26,14 +26,19 @@ export class SearchboxComponent implements OnInit {
 
   // searching 
   searchingTimeout: any;
+  suggestions: any;
   search(ev: any){
     if(ev.target.value.length > 2){
       clearTimeout(this.searchingTimeout);
       this.searchingTimeout = setTimeout(() => {
         this.mainData.get(`api/get-search?q=${ev.target.value}`).subscribe(data => {
-          console.log(data);
+          // console.log(data);
+          this.suggestions = data['rows'];
         })
       }, 250);
+    }
+    else{
+      this.suggestions = [];
     }
   }
 

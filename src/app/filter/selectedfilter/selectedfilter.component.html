@@ -1,34 +1,19 @@
 <mat-chip-list>
-    <mat-chip>Free Wifi
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>Air Conditioned
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>Wildlife Safari
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>Spa
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>₹ 10,000 - 20,000
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>Free Wifi
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>Air Conditioned
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>Wildlife Safari
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>Spa
-        <mat-icon matChipRemove>cancel</mat-icon>
-    </mat-chip>
-    <mat-chip>₹ 10,000 - 20,000
-        <mat-icon matChipRemove>cancel</mat-icon>
+    <mat-chip *ngFor="let f of facility_filters" (click)="deleteFilter(f,'facilities')">{{f.facility_name}}
+        <mat-icon matChipRemove (click)="deleteFilter(f,'facilities')">cancel</mat-icon>
     </mat-chip>
 
-    <button mat-button color="warn">Clear All</button>
+    <mat-chip *ngFor="let f of facility_foods" (click)="deleteFilter(f,'food')">{{f.food_name}}
+        <mat-icon matChipRemove (click)="deleteFilter(f,'food')">cancel</mat-icon>
+    </mat-chip>
+
+    <mat-chip *ngFor="let f of facility_transportations" (click)="deleteFilter(f,'transportation')">{{f.transportation_name}}
+        <mat-icon matChipRemove (click)="deleteFilter(f,'transportation')">cancel</mat-icon>
+    </mat-chip>
+
+    <button mat-button color="warn" 
+    *ngIf="(facility_filters && facility_filters.length > 0) ||
+    (facility_foods && facility_foods.length > 0) || 
+    (facility_transportations && facility_transportations.length > 0) "
+    (click)="reset()">Clear All</button>
 </mat-chip-list>

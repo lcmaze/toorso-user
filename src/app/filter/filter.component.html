@@ -1,21 +1,26 @@
 <app-header></app-header>
-<app-search></app-search>
+<app-search (category)="categoryChange($event)"></app-search>
 
 <section>
     <div class="w-80">
         <div class="selected-filters py-3">
-            <app-selectedfilter></app-selectedfilter>
+            <app-selectedfilter #selected_filter (filter)="deleteSelectedFilters($event)"></app-selectedfilter>
         </div>
 
         <div class="main mt-2">
             <div class="aside">
-                <app-aside></app-aside>
+                <app-aside (filter)="filterChange($event)" (selected)="fullFilterChange($event)" #aside_filter></app-aside>
             </div>
             <div class="results pl-xl-4" *ngIf="vendors">
                 <h6 class="mt-2 mb-3">Total <strong>{{vendors.count}}</strong> results</h6>
                 <div class="w-100 mb-3" *ngFor="let v of vendors.rows; let i = index">
-                    <app-results [data]="v" link="/details"></app-results>
+                    <app-results [data]="v" [link]="'/vendor/' + v.meta_slug"></app-results>
                 </div>
+                <mat-paginator [length]="vendors.count"
+                    [pageSize]="limit"
+                    [pageSizeOptions]="[10,25,50]"
+                    (page)="loadMore($event)">
+                </mat-paginator>
             </div>
         </div>
     </div>

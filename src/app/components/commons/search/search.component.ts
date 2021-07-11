@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { GuestmodalComponent } from '../guestmodal/guestmodal.component';
 
@@ -11,6 +11,7 @@ export class SearchComponent implements OnInit {
 
   @Input ('country') country: boolean = true;
   @Input ('timeguest') timeguest: boolean = true;
+  @Output('category') categoryEmitter: any = new EventEmitter();
 
   constructor(public dialog: MatDialog) { }
 
@@ -25,6 +26,10 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  categoryChange(ev: any){
+    this.categoryEmitter.emit(ev);
   }
 
 }

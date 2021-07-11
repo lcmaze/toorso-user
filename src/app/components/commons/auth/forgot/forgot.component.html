@@ -5,12 +5,13 @@
 
     <div class="sect mt-3 mb-3">Reset Password</div>
 
-    <form *ngIf="emailview">
+    <form *ngIf="emailview" [formGroup]="resetForm" (ngSubmit)="resetPassword()">
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>Email Id</mat-label>
-            <input matInput placeholder="Email">
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="!resetForm.controls['email'].valid && resetForm.controls['email'].touched">Enter a valid email</mat-error>
         </mat-form-field>
-        <button mat-flat-button color="primary" class="login-btn" (click)="send()">Send OTP</button>
+        <button mat-flat-button color="primary" class="login-btn" type="submit">Reset Password</button>
     </form>
 
     <form *ngIf="otpview">

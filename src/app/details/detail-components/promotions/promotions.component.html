@@ -1,9 +1,9 @@
-<div class="card">
-    <img src="assets/images/offer.jpeg" alt="">
+<div class="card" *ngIf="data">
+    <img [src]="cdnLink + 'promotions/' + data.image" [alt]="data.promotion_text">
     <div class="p-2">
-        <div class="link">10% Discount on Deluxe A/C Rooms</div>
+        <div class="link">{{data.promotion_text}}</div>
         <div class="time">
-            2nd October - 28th October, 2020
+            {{parseDate(data.start_date)}} - {{parseDate(data.end_date)}}
         </div>
     </div>
 </div>

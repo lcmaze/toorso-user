@@ -10,6 +10,7 @@ import { AsideComponent } from './aside/aside.component';
 import { ResultsComponent } from './results/results.component';
 import { MatInputModule } from '@angular/material';
 import { Ng5SliderModule } from 'ng5-slider';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { Ng5SliderModule } from 'ng5-slider';
     CommonsModule,
     MatInputModule,
     Ng5SliderModule,
+    FormsModule
   ]
 })
 export class FilterModule { }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-gallery',
@@ -10,10 +11,23 @@ export class GalleryComponent implements OnInit {
 
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  cdnLink: string = environment.cdnLink;
 
+  @Input('data') data: any;
   constructor() { }
 
   ngOnInit() {
+
+    this.galleryImages = [];
+    if(this.data && this.data.length > 0) {
+      for (let image of this.data) {
+        this.galleryImages.push({
+          small: `${this.cdnLink}gallery/${image.filename}`,
+          medium: `${this.cdnLink}gallery/${image.filename}`,
+          big: `${this.cdnLink}gallery/${image.filename}`
+        });
+      }
+    }
 
     this.galleryOptions = [
       {
@@ -37,32 +51,32 @@ export class GalleryComponent implements OnInit {
       }
     ];
 
-    this.galleryImages = [
-      {
-        small: 'assets/images/resort.jpg',
-        medium: 'assets/images/resort.jpg',
-        big: 'assets/images/resort.jpg'
-      },
-      {
-        small: 'assets/images/resort.jpg',
-        medium: 'assets/images/resort.jpg',
-        big: 'assets/images/resort.jpg'
-      }, {
-        small: 'assets/images/resort.jpg',
-        medium: 'assets/images/resort.jpg',
-        big: 'assets/images/resort.jpg'
-      }, 
-      {
-        small: 'assets/images/resort.jpg',
-        medium: 'assets/images/resort.jpg',
-        big: 'assets/images/resort.jpg'
-      },
-      {
-        small: 'assets/images/resort.jpg',
-        medium: 'assets/images/resort.jpg',
-        big: 'assets/images/resort.jpg'
-      },
-    ];
+    // this.galleryImages = [
+    //   {
+    //     small: 'assets/images/resort.jpg',
+    //     medium: 'assets/images/resort.jpg',
+    //     big: 'assets/images/resort.jpg'
+    //   },
+    //   {
+    //     small: 'assets/images/resort.jpg',
+    //     medium: 'assets/images/resort.jpg',
+    //     big: 'assets/images/resort.jpg'
+    //   }, {
+    //     small: 'assets/images/resort.jpg',
+    //     medium: 'assets/images/resort.jpg',
+    //     big: 'assets/images/resort.jpg'
+    //   }, 
+    //   {
+    //     small: 'assets/images/resort.jpg',
+    //     medium: 'assets/images/resort.jpg',
+    //     big: 'assets/images/resort.jpg'
+    //   },
+    //   {
+    //     small: 'assets/images/resort.jpg',
+    //     medium: 'assets/images/resort.jpg',
+    //     big: 'assets/images/resort.jpg'
+    //   },
+    // ];
 
   }
 

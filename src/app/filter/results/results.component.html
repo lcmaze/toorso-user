@@ -3,20 +3,17 @@
         <div class="row mx-0">
             <div class="col-xl-3 px-0">
                 <div class="gallery">
-                    <div [id]="ids" class="carousel slide" style=" height: calc(100% - 60px);min-height: calc(100% - 60px);max-height: calc(100% - 60px);" data-ride="carousel" data-interval="false">
+                    <div [id]="'vendor_' + data.vendor_id" class="carousel slide" style=" height: calc(100% - 60px);min-height: calc(100% - 60px);max-height: calc(100% - 60px);" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner h100">
-                            <div class="carousel-item h100 active">
-                                <img src="assets/images/resort2.jpg" alt="...">
-                            </div>
-                            <div class="carousel-item h100">
-                                <img src="assets/images/resort2.jpg" alt="...">
+                            <div class="carousel-item h100" [ngClass]="i === 0 ? 'active' : ''" *ngFor="let g of galleryImages;let i = index">
+                                <img [src]="cdnLink + 'gallery/' + g.filename" [alt]="g.filename">
                             </div>
                         </div>
-                        <a class="carousel-control-prev" [href]="'#'+ids" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" [href]="'#vendor_'+data.vendor_id" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next" [href]="'#'+ids" role="button" data-slide="next">
+                        <a class="carousel-control-next" [href]="'#vendor_'+data.vendor_id" role="button" data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
@@ -31,17 +28,17 @@
                     </owl-carousel> -->
 
                     <div class="discount">10% Discount on A/C Deluxe Rooms</div>
-                    <div class="price lnk" [routerLink]="link">
+                    <div class="price lnk" (click)="navigate()">
                         <h6>Price Starts from</h6>
                         <h5>₹ 1000</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-9 p-3 lnk" [routerLink]="link">
+            <div class="col-xl-9 p-3 lnk">
                 <div class="row mx-0">
                     <div class="col-md-10 px-0">
                         <div class="name">
-                            <h1>{{data.vendor_name}}</h1>
+                            <h1 (click)="navigate()">{{data.vendor_name}}</h1>
                             <!-- ratings -->
                             <div class="grade py-1">
                                 <span class="material-icons">grade</span>
@@ -51,43 +48,41 @@
                                 <span class="material-icons">grade</span>
                             </div>
                         </div>
-                        <div class="location">
+                        <div class="location" (click)="navigate()">
                             <span class="material-icons">location_on</span>
+                            <span class="pl-2">{{data.vendor_area}}</span>,
                             <span class="pl-2">{{data.city_info.city_name}}</span>,
                             <span class="pl-2">{{data.city_info.states_info.state_name}}</span>,
-                            <span class="pl-2">{{data.city_info.states_info.country_info.country_name}}</span>.
                         </div>
                         <div class="caption mt-2">
-                            <h6>{{data.near_airport}}</h6>
-                            <h6>{{data.near_railway}}</h6>
+                            <div class="d-flex">
+                                <div class="radio-wrapper" style="margin-right:5px;" *ngIf="data.near_airport">
+                                    <input type="radio" name="vendor_airport_railway" value="vendor_airport_select" (change)="selectAirportRailway($event)">
+                                    <label>&nbsp;Airport</label>
+                                </div>
+                                <div class="radio-wrapper" style="margin-right:5px;" *ngIf="data.near_railway">
+                                    <input type="radio" name="vendor_airport_railway" value="vendor_railway_select" (change)="selectAirportRailway($event)">
+                                    <label>&nbsp;Railway</label>
+                                </div>
+                            </div>
+                            <h6 *ngIf="showRailwayAirport === 'vendor_airport_select'">{{data.near_airport}}</h6>
+                            <h6 *ngIf="showRailwayAirport === 'vendor_railway_select'">{{data.near_railway}}</h6>
                         </div>
                         <div class="features mt-3 pl-1">
-                            <mat-chip-list>
-                                <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Cancellation</mat-chip>
-                                <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Tour Guide</mat-chip>
-                                <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Pickup & Drop</mat-chip>
-                                <mat-chip class="px-2 py-0" style="min-height: 29px;" color="accent" selected>Free Breakfast, Lunch & Dinner</mat-chip>
+                            <mat-chip-list *ngIf="highlighted_keywords && highlighted_keywords.length > 0">
+                                <mat-chip class="px-2 py-0" style="min-height: 29px;background: #0274b9;" selected *ngFor="let t of highlighted_keywords | slice:0:8">{{t}}</mat-chip>
                             </mat-chip-list>
                         </div>
-                        <div class="facilities mt-2">
+                        <div class="facilities mt-2" *ngIf="data.vendor_branches[0].branch_facilities && data.vendor_branches[0].branch_facilities.length > 0">
                             <h5>Facilities</h5>
-                            <div class="icons">
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
-                                <span class="filterfont" matTooltip="Facility Name" matTooltipClass="custom-tooltip">a</span>
+                            <div class="icons" *ngIf="data.vendor_branches && data.vendor_branches.length > 0">
+                                <span class="filterfont" [matTooltip]="f.facility.facility_name" matTooltipClass="custom-tooltip" *ngFor="let f of data.vendor_branches[0].branch_facilities">{{f.facility.icon}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2 px-0 d-none d-md-block text-right">
-                        <img class="logo" src="assets/images/resort.jpg" alt="">
-                        <img class="vimg mt-2" src="assets/images/verified.png" alt="">
+                        <img class="logo" [src]="cdnLink + 'vendors/' + data.vendor_logo" alt="">
+                        <img class="vimg mt-2" src="assets/images/verified.png" alt="" *ngIf="data.membership.is_verified">
                         <!-- <div class="verified mt-2"><span class="material-icons pr-0">check_circle</span> Verified</div> -->
                     </div>
 
@@ -95,12 +90,11 @@
 
                 <div class="row mx-0">
                     <div class="col-md-8 px-0">
-                        <div class="nearby mt-2">
+                        <div class="nearby mt-2" *ngIf="data.near_airport || data.near_railway">
                             <h5>Nearby Tourist Places</h5>
                             <div class="lists">
-                                <li><span class="material-icons pr-1">location_on</span>Kanjirakolly Waterfalls - 2 Km</li>
-                                <li><span class="material-icons pr-1">location_on</span>Aralam Wildlife Sanctuary - 22 Km</li>
-                                <li><span class="material-icons pr-1">location_on</span>Pazhassi Dam - 15 Km</li>
+                                <!-- <li *ngIf="data.near_airport"><span class="material-icons pr-1">location_on</span>Near Airport - {{data.near_airport}}</li>
+                                <li *ngIf="data.near_railway"><span class="material-icons pr-1">location_on</span>Near Railway - {{data.near_railway}}</li> -->
                             </div>
                         </div>
                     </div>
