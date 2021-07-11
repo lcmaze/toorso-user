@@ -15,8 +15,8 @@ import { PromotionsComponent } from './detail-components/promotions/promotions.c
 
 @NgModule({
   declarations: [
-    PriceComponent, 
-    InfoComponent,  
+    PriceComponent,
+    InfoComponent,
     DetailTableComponent,
     DetailSearchComponent,
     GalleryComponent,
@@ -29,6 +29,10 @@ import { PromotionsComponent } from './detail-components/promotions/promotions.c
     MaterialModule,
     CommonsModule,
     NgxGalleryModule
+  ],
+  exports: [
+    GalleryComponent,
+    DetailTableComponent
   ]
 })
 export class DetailsModule { }
