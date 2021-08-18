@@ -12,6 +12,9 @@ import { GalleryComponent } from './detail-components/gallery/gallery.component'
 import { NgxGalleryModule } from 'ngx-gallery';
 import { RoomboxComponent } from './detail-components/roombox/roombox.component';
 import { PromotionsComponent } from './detail-components/promotions/promotions.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SuccessComponent } from './success/success.component';
+import { FailureComponent } from './failure/failure.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { PromotionsComponent } from './detail-components/promotions/promotions.c
     GalleryComponent,
     RoomboxComponent,
     PromotionsComponent,
+    PaymentComponent,
+    SuccessComponent,
+    FailureComponent,
   ],
   imports: [
     CommonModule,

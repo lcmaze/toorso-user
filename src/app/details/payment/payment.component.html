@@ -16,18 +16,10 @@
     <div class="w-80 py-5">
         <div class="row">
             <div class="col-lg-8 col-xl-7">
-                <h2 class="heading pb-3 mt-4 mb-4">Available Rooms <span>(5)</span></h2>
-                <app-roombox [rooms]="apidata"></app-roombox>
-            </div>
-            <div class="col-lg-4 col-xl-5">
-                <div class="no-select">
-                    <app-detail-search></app-detail-search>
-                </div>
-
-                <div class="checkout-menu mt-4 mx-2">
-                    <h2 class="cap">Your Pick</h2>
+                <h2 class="heading pb-3 mt-4 mb-4">Checkout</h2>
+                <div class="checkout-menu mt-4">
                     <div class="bill-section">
-                        <div class="row mx-0">
+                        <div class="row mx-0 mb-2">
                             <div class="col-6 px-0">
                                 <div class="name">Name</div>
                             </div>
@@ -74,14 +66,21 @@
                             </div>
                         </div>
 
-                    </div>
-                    <div class="foot p-2">
-                        <button mat-flat-button color="primary" class="w-100" routerLink="/details/payment">Proceed to Payment</button>
+                        <label class="customcheck">
+                           I hereby Acknowledge <a href="#" class="red-a">Terms and Conditions</a> <span class="count"></span>
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                        </label>
+                        <div class="foot mt-3">
+                            <button mat-flat-button color="primary" routerLink="/details/success">Proceed to Payment</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
+            <div class="col-lg-4 col-xl-5">
+            </div>
         </div>
-
     </div>
 </section>
 
