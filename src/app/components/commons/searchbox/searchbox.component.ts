@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Renderer2, ElementRef } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
@@ -11,10 +11,17 @@ export class SearchboxComponent implements OnInit {
   keypressed : boolean = false;
   @Input('type') type : string;
 
-  constructor(private mainData: MainService) { }
+  @ViewChild('suggestionsBox', { static: false}) suggestionsBox: any = ElementRef;
+  @ViewChild('searchInput', { static: false}) searchInput: any = ElementRef;
+
+  constructor(private mainData: MainService, private renderer: Renderer2) {}
 
   ngOnInit() {
-
+    this.renderer.listen('window', 'click',(e:Event)=>{
+     if(this.suggestionsBox && e.target !== this.suggestionsBox.nativeElement && e.target!==this.searchInput.nativeElement){
+         this.suggestions = [];
+     }
+ });
   }
 
   ngAfterViewInit() {
@@ -28,7 +35,7 @@ export class SearchboxComponent implements OnInit {
   searchingTimeout: any;
   suggestions: any;
   search(ev: any){
-    if(ev.target.value.length > 2){
+    if(ev.target.value.length > 0){
       clearTimeout(this.searchingTimeout);
       this.searchingTimeout = setTimeout(() => {
         this.mainData.get(`api/get-search?q=${ev.target.value}`).subscribe(data => {

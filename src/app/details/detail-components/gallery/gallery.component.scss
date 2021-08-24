@@ -2,3 +2,7 @@ ngx-gallery::ng-deep .ngx-gallery-arrow {
     font-size: 30px;
     opacity: 0.4;
 }
+ngx-gallery{
+    z-index: 0;
+    position: relative;
+}

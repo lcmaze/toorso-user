@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../services/main.service';
 import { AsideComponent } from './aside/aside.component';
 import { SelectedfilterComponent } from './selectedfilter/selectedfilter.component';
@@ -10,13 +11,17 @@ import { SelectedfilterComponent } from './selectedfilter/selectedfilter.compone
 })
 export class FilterComponent implements OnInit {
 
-  constructor(private mainData: MainService) { }
+  constructor(private mainData: MainService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   @ViewChild('selected_filter', { static: false}) selectedFilterComponent: SelectedfilterComponent;
   @ViewChild('aside_filter', { static: false}) asideFilterComponent: AsideComponent;
 
   ngOnInit() {
-    this.getDetails();
+    this.activatedRoute.paramMap.subscribe((params) => {
+      this.page = Number(params.get('link'));
+      if(!this.page) this.page = 1;
+      this.getDetails();
+    })
   }
 
   page: any = 1;
@@ -24,19 +29,23 @@ export class FilterComponent implements OnInit {
   filters: any;
   vendors: any;
   getDetails(){
-    this.page = 1;
     this.mainData.get(`api/get-filter-results?page=${this.page}&limit=${this.limit}&${this.filterLink}${this.category_link}`).subscribe(data => {
       this.vendors = data;
     })
   }
 
   loadMore(ev: any) {
+    // console.log(ev);
+    window.scrollTo(0, 0);
     this.page = ev.pageIndex + 1;
     this.limit = ev.pageSize;
-    this.mainData.get(`api/get-filter-results?page=${this.page}&limit=${this.limit}&${this.filterLink}${this.category_link}`).subscribe(data => {
-      this.vendors = data;
-      window.scrollTo(0, 0);
-    })
+    if(this.page - 1 === ev.pageIndex) this.getDetails();
+    else this.router.navigateByUrl('/filter/' + this.page);
+    // this.limit = ev.pageSize;
+    // this.mainData.get(`api/get-filter-results?page=${this.page}&limit=${this.limit}&${this.filterLink}${this.category_link}`).subscribe(data => {
+    //   this.vendors = data;
+    //   window.scrollTo(0, 0);
+    // })
   }
 
 

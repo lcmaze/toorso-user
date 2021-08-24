@@ -6,7 +6,7 @@ import { PriceComponent } from './price/price.component';
 
 const routes: Routes = [
   { path: '', component: InfoComponent },
-  { path: 'price', component: PriceComponent }];
+  { path: ':slug', component: PriceComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,9 +1,11 @@
 <section *ngIf="data">
     <div class="result-box">
         <div class="row mx-0">
-            <div class="col-xl-3 px-0">
+            <div class="col-xl-3 px-0" *ngIf="galleryImages && galleryImages.length > 0">
                 <div class="gallery">
-                    <div [id]="'vendor_' + data.vendor_id" class="carousel slide" style=" height: calc(100% - 60px);min-height: calc(100% - 60px);max-height: calc(100% - 60px);" data-ride="carousel" data-interval="false">
+                    <div [id]="'vendor_' + data.vendor_id" class="carousel slide" 
+                    [ngClass]="vendor_product_main_price === 0 ? 'gallery-full-height' : ''"
+                    style=" height: calc(100% - 60px);min-height: calc(100% - 60px);max-height: calc(100% - 60px);" data-ride="carousel" data-interval="false">
                         <div class="carousel-inner h100">
                             <div class="carousel-item h100" [ngClass]="i === 0 ? 'active' : ''" *ngFor="let g of galleryImages;let i = index">
                                 <img [src]="cdnLink + 'gallery/' + g.filename" [alt]="g.filename">
@@ -27,34 +29,45 @@
                         </div>
                     </owl-carousel> -->
 
-                    <div class="discount">10% Discount on A/C Deluxe Rooms</div>
-                    <div class="price lnk" (click)="navigate()">
-                        <h6>Price Starts from</h6>
-                        <h5>₹ 1000</h5>
+                    <div class="discount" 
+                    [style.backgroundColor]="data.vendor_branches[0].product_promotion.banner_color" 
+                    [style.color]="data.vendor_branches[0].product_promotion.banner_color === '#ffeb3b' ? '#424242' : '#fff'"
+                    *ngIf="data.vendor_branches[0].product_promotion">{{data.vendor_branches[0].product_promotion.promotion_text}}</div>
+                    <div class="price lnk" (click)="navigate()" *ngIf="vendor_product_main_price != 0">
+                        <h6 *ngIf="!data.vendor_branches[0].product_promotion">Price Starts from</h6>
+                        <p class="m-0 discount-rate" *ngIf="data.vendor_branches[0].product_promotion">starts from <span>₹ {{vendor_product_original_price}}</span> 
+                            &nbsp;{{data.vendor_branches[0].product_promotion.discount}}% Discount</p>
+                        <h5>₹ {{vendor_product_main_price}}</h5>
+                        <!-- <h5>₹ {{getLowestPrice(data.vendor_branches[0].vendor_products)}}</h5> -->
                     </div>
                 </div>
             </div>
-            <div class="col-xl-9 p-3 lnk">
+            <div class="col-xl-9 p-3 lnk" [ngClass]="galleryImages && galleryImages.length > 0 ? 'col-xl-9' : 'col-xl-12'">
                 <div class="row mx-0">
                     <div class="col-md-10 px-0">
                         <div class="name">
                             <h1 (click)="navigate()">{{data.vendor_name}}</h1>
                             <!-- ratings -->
-                            <div class="grade py-1">
-                                <span class="material-icons">grade</span>
-                                <span class="material-icons">grade</span>
-                                <span class="material-icons">grade</span>
-                                <span class="material-icons">grade</span>
-                                <span class="material-icons">grade</span>
+                            <div class="grade py-1" matTooltip="Hotel Class" matTooltipClass="custom-tooltip" *ngIf="data.vendor_star_level">
+                                <span class="star-image" [style.visibility]="data.vendor_star_level >= 1 ? 'visibile' : 'hidden'"><img src="assets/images/star_icon.png"></span>
+                                <span class="star-image" [style.visibility]="data.vendor_star_level >= 2 ? 'visibile' : 'hidden'"><img src="assets/images/star_icon.png"></span>
+                                <span class="star-image" [style.visibility]="data.vendor_star_level >= 3 ? 'visibile' : 'hidden'"><img src="assets/images/star_icon.png"></span>
+                                <span class="star-image" [style.visibility]="data.vendor_star_level >= 4 ? 'visibile' : 'hidden'"><img src="assets/images/star_icon.png"></span>
+                                <span class="star-image" [style.visibility]="data.vendor_star_level >= 5 ? 'visibile' : 'hidden'"><img src="assets/images/star_icon.png"></span>
+                                <!-- <span class="material-icons" [style.visibility]="data.vendor_star_level >= 1 ? 'visibile' : 'hidden'">grade</span>
+                                <span class="material-icons" [style.visibility]="data.vendor_star_level >= 2 ? 'visibile' : 'hidden'">grade</span>
+                                <span class="material-icons" [style.visibility]="data.vendor_star_level >= 3 ? 'visibile' : 'hidden'">grade</span>
+                                <span class="material-icons" [style.visibility]="data.vendor_star_level >= 4 ? 'visibile' : 'hidden'">grade</span>
+                                <span class="material-icons" [style.visibility]="data.vendor_star_level >= 5 ? 'visibile' : 'hidden'">grade</span> -->
                             </div>
                         </div>
                         <div class="location" (click)="navigate()">
                             <span class="material-icons">location_on</span>
-                            <span class="pl-2">{{data.vendor_area}}</span>,
-                            <span class="pl-2">{{data.city_info.city_name}}</span>,
-                            <span class="pl-2">{{data.city_info.states_info.state_name}}</span>,
+                            <span class="pl-2" *ngIf="data.vendor_area">{{data.vendor_area}} | </span>
+                            <span class="pl-2" *ngIf="data.city_info && data.city_info.city_name">{{data.city_info.city_name}} | </span>
+                            <span class="pl-2" *ngIf="data.city_info && data.city_info.states_info">{{data.city_info.states_info.state_name}}</span>
                         </div>
-                        <div class="caption mt-2">
+                        <!-- <div class="caption mt-2">
                             <div class="d-flex">
                                 <div class="radio-wrapper" style="margin-right:5px;" *ngIf="data.near_airport">
                                     <input type="radio" name="vendor_airport_railway" value="vendor_airport_select" (change)="selectAirportRailway($event)">
@@ -65,22 +78,36 @@
                                     <label>&nbsp;Railway</label>
                                 </div>
                             </div>
-                            <h6 *ngIf="showRailwayAirport === 'vendor_airport_select'">{{data.near_airport}}</h6>
-                            <h6 *ngIf="showRailwayAirport === 'vendor_railway_select'">{{data.near_railway}}</h6>
+                        </div> -->
+                        <div class="caption railway_airport">
+                            <!-- <h5>Nearby Airport/Railway</h5> -->
                         </div>
+                        <h6 class="railway-train" *ngIf="data.railway_airport === 0 && data.near_airport"><span 
+                            class="material-icons mr-1"
+                            style="font-size:19px"
+                            >flight</span>{{data.near_airport}}</h6>
+                        <h6 class="railway-train" *ngIf="data.railway_airport === 1 && data.near_railway"><span 
+                            class="material-icons mr-1"
+                            style="font-size:19px"
+                            >train</span>{{data.near_railway}}</h6>
                         <div class="features mt-3 pl-1">
                             <mat-chip-list *ngIf="highlighted_keywords && highlighted_keywords.length > 0">
-                                <mat-chip class="px-2 py-0" style="min-height: 29px;background: #0274b9;" selected *ngFor="let t of highlighted_keywords | slice:0:8">{{t}}</mat-chip>
+                                <mat-chip class="px-2 py-0" style="min-height: 29px;background: #0274b9;" selected *ngFor="let t of highlighted_keywords | slice:0:4">{{t}}</mat-chip>
                             </mat-chip-list>
                         </div>
-                        <div class="facilities mt-2" *ngIf="data.vendor_branches[0].branch_facilities && data.vendor_branches[0].branch_facilities.length > 0">
-                            <h5>Facilities</h5>
+                        <div class="facilities mt-2" *ngIf="data.vendor_branches[0].all_branch_facilities && data.vendor_branches[0].all_branch_facilities.length > 0">
+                            <h5>Available Facilities</h5>
                             <div class="icons" *ngIf="data.vendor_branches && data.vendor_branches.length > 0">
-                                <span class="filterfont" [matTooltip]="f.facility.facility_name" matTooltipClass="custom-tooltip" *ngFor="let f of data.vendor_branches[0].branch_facilities">{{f.facility.icon}}</span>
+                                <span class="filterfont" [matTooltip]="f.facility.facility_name" matTooltipClass="custom-tooltip" 
+                                *ngFor="let f of data.vendor_branches[0].all_branch_facilities">{{f.facility.icon}}</span>
+                                <span class="filterfont" [matTooltip]="f.food_arrangement.food_name" matTooltipClass="custom-tooltip" 
+                                *ngFor="let f of data.vendor_branches[0].all_branch_foods">{{f.food_arrangement.icon}}</span>
+                                <span class="filterfont" [matTooltip]="f.transportation_facility.transportation_name" matTooltipClass="custom-tooltip" 
+                                *ngFor="let f of data.vendor_branches[0].all_branch_transportation">{{f.transportation_facility.icon}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 px-0 d-none d-md-block text-right">
+                    <div class="col-md-2 px-0 d-none d-md-block text-right" (click)="navigate()">
                         <img class="logo" [src]="cdnLink + 'vendors/' + data.vendor_logo" alt="">
                         <img class="vimg mt-2" src="assets/images/verified.png" alt="" *ngIf="data.membership.is_verified">
                         <!-- <div class="verified mt-2"><span class="material-icons pr-0">check_circle</span> Verified</div> -->
@@ -90,7 +117,7 @@
 
                 <div class="row mx-0">
                     <div class="col-md-8 px-0">
-                        <div class="nearby mt-2" *ngIf="data.near_airport || data.near_railway">
+                        <div class="nearby mt-2">
                             <h5>Nearby Tourist Places</h5>
                             <div class="lists">
                                 <!-- <li *ngIf="data.near_airport"><span class="material-icons pr-1">location_on</span>Near Airport - {{data.near_airport}}</li>
@@ -99,14 +126,46 @@
                         </div>
                     </div>
                     <div class="col-md-4 px-0">
-                        <div class="ratings mt-3">
-                            <h5>Reviews & Ratings</h5>
-                            <div class="number mt-2">
-                                <div class="rating mr-2">3.5 <span class="material-icons">star_rate</span></div>
-                                <div class="review"><span class="material-icons">person</span> 825 Reviews</div>
+                        <div class="ratings mt-3" style="float: right;">
+                            <h5 class="m-0">Reviews & Ratings</h5>
+                            <div class="d-flex right">
+                                <div class="stars">
+                                    <div class="grey-s">
+                                        <span class="material-icons">grade</span>
+                                        <span class="material-icons">grade</span>
+                                        <span class="material-icons">grade</span>
+                                        <span class="material-icons">grade</span>
+                                        <span class="material-icons">grade</span>
+                                    </div>
+                                    <div class="red-s" [style.width]="getRatingWidth(data.ratings)">
+                                        <span class="material-icons">grade</span>
+                                        <span class="material-icons">grade</span>
+                                        <span class="material-icons">grade</span>
+                                        <span class="material-icons">grade</span>
+                                        <span class="material-icons">grade</span>
+                                    </div>
+                                </div>
+                                <div class="number mt-2" (click)="navigate()">
+                                    <div class="rating mr-2">
+                                        <ng-container *ngIf="data.ratings && data.ratings.total_ratings != 0">
+                                            {{
+                                                ((data.ratings.total_features_sum/data.ratings.total_ratings) +     
+                                                (data.ratings.total_services_sum/data.ratings.total_ratings) +     
+                                                (data.ratings.total_value_sum/data.ratings.total_ratings) +     
+                                                (data.ratings.total_location_sum/data.ratings.total_ratings))/4 | number : '1.1-1'
+                                            }}
+                                        </ng-container>
+                                        <ng-container *ngIf="(data.ratings && data.ratings.length <= 0) || (data.ratings && data.ratings.total_ratings === 0)">
+                                            0
+                                        </ng-container>
+                                        <!-- <span class="material-icons">star_rate</span> -->
+                                    </div>
+                                    <div class="review" *ngIf="data.ratings && data.ratings.total_ratings && data.ratings.total_ratings > 0"><span class="material-icons">person</span> {{data.ratings.total_ratings}} Reviews</div>
+                                    <div class="review" *ngIf="data.ratings && ((data.ratings && data.ratings.length <= 0) || data.ratings.total_ratings === 0)"><span class="material-icons">person</span> {{data.ratings.total_ratings}} Reviews</div>
+                                </div>
                             </div>
                             <div class="recommend mt-1">
-                                Recommended by 80% Guests
+                                <!-- Recommended by 80% Guests -->
                             </div>
                         </div>
                     </div>

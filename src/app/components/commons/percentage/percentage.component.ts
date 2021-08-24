@@ -13,6 +13,8 @@ export class PercentageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(this.percentage) this.percentage = Math.round(this.percentage * 10) / 10;
+    if(this.value) this.value = Math.round(this.value * 10) / 10;
   }
 
 }

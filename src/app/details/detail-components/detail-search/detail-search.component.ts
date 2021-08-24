@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { GuestmodalComponent } from 'src/app/components/commons/guestmodal/guestmodal.component';
 
@@ -9,9 +9,11 @@ import { GuestmodalComponent } from 'src/app/components/commons/guestmodal/guest
 })
 export class DetailSearchComponent implements OnInit {
 
+  @Input('data') data: any;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    // console.log(this.data)
   }
 
   

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PlacedetailsComponent implements OnInit {
 
   read_more = false;
+  writereview: any;
 
   constructor() { }
 

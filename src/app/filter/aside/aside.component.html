@@ -3,23 +3,23 @@
         <h4>{{selectedMainCategory.m_category_name}}</h4>
     </div>
 
-    <div class="filter-box mb-1">
-        <a>Sort By Price (₹)</a>
-        <div class="slider">
-            <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
-        </div>
-    </div>
-
     <div class="filter-box mb-1" *ngIf="sub_categories && sub_categories.length > 0">
         <a>Sort By Sub Category</a>
         <div class="contents">
             <div class="res-main" *ngFor="let f of sub_categories; let i = index">
                 <label class="customcheck">
-                    {{f.category_name}} <span class="count"></span>
-                    <input type="checkbox" (change)="selectCategory($event, i)" [value]="f.category_id" [(checked)]="f.checked">
+                    {{f.category_name}} <span class="count">({{f.count}})</span>
+                    <input type="checkbox" (change)="selectCategory($event, i)" [value]="f.category_name" [(checked)]="f.checked">
                     <span class="checkmark"></span>
                 </label>
             </div>
+        </div>
+    </div>
+
+    <div class="filter-box mb-1">
+        <a>Sort By Price (₹)</a>
+        <div class="slider">
+            <ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"></ng5-slider>
         </div>
     </div>
 
@@ -56,7 +56,7 @@
         <div class="contents">
             <div class="res-main" *ngFor="let t of transportations; let i = index">
                 <label class="customcheck">
-                    <span class="filterfont mr-sm-1">{{f.icon}}</span>
+                    <span class="filterfont mr-sm-1">{{t.icon}}</span>
                     {{t.transportation_name}} <span class="count"></span>
                     <input type="checkbox" (change)="selectTransportation($event, i)" [value]="t.transportation_id" [(checked)]="t.checked">
                     <span class="checkmark"></span>

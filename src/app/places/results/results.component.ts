@@ -10,6 +10,8 @@ export class ResultsComponent implements OnInit {
   @Input('hotel') hotel: any;
   @Input('link') link: any;
 
+  ids: any;
+
   constructor() { }
 
   ngOnInit() {

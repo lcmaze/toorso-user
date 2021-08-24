@@ -115,10 +115,11 @@ export class FirebaseService {
                     this.user = data;
                     this.loginStatus = true;
                     // get id token 
-                    console.log({uid: data.uid, message: "Logged in!", status: true});
-                    this.getToorsoUser();
+                    // console.log({uid: data.uid, message: "Logged in!", status: true});
                     data.getIdToken(true).then(async token => {
                         this.token = token;
+                        // console.log(this.token);
+                        this.getToorsoUser();
                         resolve({message: "Authenticated!", status: true});
                     }).catch(err => {
                         resolve({message: err.message, status: false});
@@ -128,7 +129,7 @@ export class FirebaseService {
                     this.loginStatus = false;
                     this.user = null; 
                     this.toorsoUser = null;
-                    console.log({message: "User Expired!", status: false});
+                    // console.log({message: "User Expired!", status: false});
                     resolve({message: "User Expired!", status: false});
                 }
             })
@@ -169,7 +170,7 @@ export class FirebaseService {
                 this.toorsoUser = data;
                 this.mainData.userDetails = this.toorsoUser;
                 this.mainData.userDetailsObservable.next(this.toorsoUser);
-                console.log(this.toorsoUser);
+                // console.log(this.toorsoUser);
             })
         }
     }

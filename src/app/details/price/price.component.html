@@ -16,13 +16,13 @@
     <div class="w-80 py-5">
         <div class="row">
             <div class="col-lg-8 col-xl-7">
-                <h2 class="heading pb-3 mt-4 mb-4">Available Rooms <span>(5)</span></h2>
-                <app-roombox [rooms]="apidata"></app-roombox>
+                <h2 class="heading pb-3 mt-4 mb-4" *ngIf="vendor">Available Rooms <span>({{vendor.vendor_products.length}})</span></h2>
+                <app-roombox *ngIf="vendor" [rooms]="apidata" (data)="calculateCart($event)"></app-roombox>
             </div>
             <div class="col-lg-4 col-xl-5">
-                <div class="no-select">
+                <!-- <div class="no-select">
                     <app-detail-search></app-detail-search>
-                </div>
+                </div> -->
 
                 <div class="checkout-menu mt-4 mx-2">
                     <h2 class="cap">Your Pick</h2>
@@ -40,29 +40,19 @@
                         </div>
 
                         <ng-container>
-                            <div class="row mx-0">
-                                <div class="col-6 px-0">
-                                    <div class="name1">Ordinary Room - Suitable for 1 Adult</div>
+                            <ng-container *ngFor="let c of cart">
+                                <div class="row mx-0" *ngIf="c.qty != 0">
+                                    <div class="col-6 px-0">
+                                        <div class="name1">{{c.title}}</div>
+                                    </div>
+                                    <div class="col px-0">
+                                        <div class="qty1">{{c.qty}}</div>
+                                    </div>
+                                    <div class="col px-0">
+                                        <div class="price1">₹ {{calculatePrice(c)}}</div>
+                                    </div>
                                 </div>
-                                <div class="col px-0">
-                                    <div class="qty1">2</div>
-                                </div>
-                                <div class="col px-0">
-                                    <div class="price1">₹ 2400</div>
-                                </div>
-                            </div>
-
-                            <div class="row mx-0">
-                                <div class="col-6 px-0">
-                                    <div class="name1">Extra 1 Person</div>
-                                </div>
-                                <div class="col px-0">
-                                    <div class="qty1">1</div>
-                                </div>
-                                <div class="col px-0">
-                                    <div class="price1">₹ 100</div>
-                                </div>
-                            </div>
+                            </ng-container>
                         </ng-container>
 
                         <div class="row mx-0">
@@ -70,7 +60,7 @@
                                 <div class="total">Total</div>
                             </div>
                             <div class="col px-0">
-                                <div class="price2">₹ 2500</div>
+                                <div class="price2">₹ {{total_price}}</div>
                             </div>
                         </div>
 

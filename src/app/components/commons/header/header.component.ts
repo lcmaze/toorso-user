@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.mainData.userDetailsObservable.subscribe(data => {
       this.userDetails = data;
-      console.log(this.userDetails);
+      // console.log(this.userDetails);
     })
     this.getCountries();
   }
@@ -85,6 +85,7 @@ export class HeaderComponent implements OnInit {
         if(state.state_id === 4045) {
           this.selectedstate = state;
           this.mainData.selectedState.next(state);
+          this.mainData.state = state;
           // console.log(state);
         }
       })
