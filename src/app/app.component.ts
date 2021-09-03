@@ -19,9 +19,11 @@ export class AppComponent {
     });
   }
 
+  loginChecked: boolean = false;
   async ngOnInit() {
     this.mainData.showLoading();
     await this.firebase.loginCheck();
+    this.loginChecked = true;
     this.mainData.hideLoading();  
   }
 

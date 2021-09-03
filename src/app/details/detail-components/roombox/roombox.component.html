@@ -1,66 +1,70 @@
-<ng-container *ngFor="let no of rooms">
-    <div class="card-room mb-4" [ngClass]="{'unavail': no.type === 'inactive','selected': no.added}">
-        <h1 class="p-3 mb-0">{{no.name}}</h1>
+<ng-container *ngFor="let no of products; let i = index">
+    <!-- <div class="card-room mb-4" [ngClass]="{'unavail': no.type === 'inactive','selected': no.added}"> -->
+    <div class="card-room mb-4">
+        <h1 class="p-3 mb-0">{{no.room_type}}</h1>
         <div class="sub-head px-3 py-2">
-            <div>{{no.type1}}</div>
-            <div>{{no.type2}}</div>
+            <div>{{no.subtitle}}</div>
+            <div>{{no.bed_type}}</div>
         </div>
         <div class="row mx-0">
             <div class="col-md-8 px-0">
                 <div class="specialities px-3 py-2">
                     <div class="nam mb-1">Facilities Included</div>
-                    <li *ngFor="let facilities of no.properties">{{facilities}}</li>
+                    <li *ngFor="let facilities of no.highlited_features.split(',')">{{facilities}}</li>
                 </div>
                 <hr class="my-0">
                 <div class="other-list px-3 py-2">
                     <div class="row mx-0">
-                        <div class="col-md-6 px-0">
-                            <li>{{no.cap1}}</li>
-                        </div>
-                        <div class="col-md-6 px-0">
-                            <li>{{no.cap2}}</li>
-                        </div>
-                        <div class="col-md-6 px-0">
-                            <li>{{no.cap3}}</li>
-                        </div>
-                        <div class="col-md-6 px-0">
-                            <li>{{no.cap4}}</li>
+                        <div class="col-md-6 px-0" *ngFor="let f of no.room_amenities.split(',')">
+                            <li>{{f}}</li>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 px-0">
-                <div class="addons px-3 py-2" *ngIf="no.addons != null">
+                <div class="addons px-3 py-2" *ngIf="no.product_addon.value_one && no.product_addon.value_two">
                     <div class="nam mb-1">Addons</div>
                     <div class="select-section">
-                        <label class="customcheck" *ngFor="let add of no.addons">Add <span class="cost">₹ {{add.price}}/-</span><br><span class="define">{{add.def}}</span>
-                            <input type="checkbox">
+                        <label class="customcheck">
+                            Add 
+                            <span class="cost">₹ {{no.product_addon.value_one}}/-</span><br>
+                            <span class="define">{{no.product_addon.text_one}}</span>
+                            <input type="checkbox" [disabled]="total_products[i] ? false : true" (change)="addAddon($event, {text: no.product_addon.text_one, value: no.product_addon.value_one}, i, 1)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="select-section">
+                        <label class="customcheck">
+                            Add 
+                            <span class="cost">₹ {{no.product_addon.value_two}}/-</span><br>
+                            <span class="define">{{no.product_addon.text_two}}</span>
+                            <input type="checkbox" [disabled]="total_products[i] ? false : true" (change)="addAddon($event, {text: no.product_addon.text_two, value: no.product_addon.value_two}, i, 2)">
                             <span class="checkmark"></span>
                         </label>
                     </div>
                 </div>
-                <div class="no-addon" *ngIf="no.addons == null">
-                    <img src="assets/images/key-room.svg" alt="">
+                <div class="no-addon" *ngIf="!no.product_addon.value_one && !no.product_addon.value_two">
+                    <img src="assets/images/key-room.svg" alt="" class="my-3">
                 </div>
             </div>
         </div>
         <div class="row mx-0" style="border-top: 1px solid #eaeaea">
             <div class="col-md-4 px-0 d-flex align-items-center">
                 <div class="add w-100 px-3 py-2">
-                    <button mat-flat-button color="primary" class="w-100" *ngIf="!no.added" (click)="no.added = !no.added">Add Rooms <mat-icon>add</mat-icon></button>
-                    <button mat-stroked-button color="primary" class="w-100" *ngIf="no.added" (click)="no.added = !no.added">Remove <mat-icon>close</mat-icon></button>
+                    <button mat-flat-button color="primary" class="w-100" *ngIf="!no.added" (click)="no.added = !no.added;addProduct(no, i)">Add Rooms <mat-icon>add</mat-icon></button>
+                    <button mat-stroked-button color="primary" class="w-100" *ngIf="no.added" (click)="no.added = !no.added;no.total_qty = 1;deleteProduct(no.product_id, i)">Remove <mat-icon>close</mat-icon></button>
                 </div>
             </div>
             <div class="col-6 col-md-4 px-0 d-flex align-items-center justify-content-end">
                 <div class="add px-1 px-md-3 py-2" [ngClass]="{'nocount': !no.added}">
-                    <app-counter [value]="1" [btn]="'normal'"></app-counter>
+                    <app-counter [value]="no.total_qty" [max]="no.room_qty" [btn]="'normal'" (data)="no.total_qty = $event;addProduct(no, i)"></app-counter>
                 </div>
             </div>
             <div class="col-6 col-md-4 px-0 d-flex align-items-center justify-content-end">
                 <div class="py-1">
-                    <div class="offer"><span>₹ 1400</span> 5% Discount</div>
+                    <div class="offer" *ngIf="rooms.product_promotion"><span>₹ {{no.original_price}}</span> {{rooms.product_promotion.discount}}% Discount</div>
                     <div class="price px-1 px-md-3">
-                        ₹ {{no.baseprice}}/-
+                        ₹ {{no.price | number:'1.2'}}
                     </div>
                 </div>
             </div>

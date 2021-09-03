@@ -123,9 +123,10 @@
 
 .heading {
     font-family: 'Open Sans SB';
-    font-size: 28px;
+    font-size: 20px;
     color: #3d3d3d;
     border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 7px ​!important;
     span {
         font-size: 18px;
         color: #7e7e7e;
@@ -237,10 +238,11 @@
             text-align: center;
         }
         .total-foot {
-            font-family: 'Open Sans';
+            font-family: 'Open Sans R';
             font-size: 13px;
             color: #7e7e7e;
             text-align: center;
+            white-space: nowrap;
             span {
                 font-family: 'Open Sans SB';
             }
@@ -257,6 +259,7 @@
             font-size: 14px;
             margin-top: 10px;
             margin-bottom: 0px;
+            text-align: center;
         }
     }
 }

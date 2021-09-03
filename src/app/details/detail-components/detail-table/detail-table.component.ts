@@ -11,6 +11,7 @@ export class DetailTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // console.log(this.data);
   }
 
 }

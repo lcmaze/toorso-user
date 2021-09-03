@@ -19,11 +19,19 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   passwordMatch: boolean = true;
 
   ngOnInit() {
+    this.mainData.selectedState.subscribe(state => {
+      this.selectedState = state;
+      this.getStates(this.selectedState.country_info.country_id);
+      this.getCities(this.selectedState.state_id);
+    })
     if(this.data){
       this.selectedState = this.data;
-      this.getStates(this.data.country_info.country_id);
-      this.getCities(this.data.state_id);
     }
+    else{
+      this.selectedState = this.mainData.state;
+    }
+    this.getStates(this.selectedState.country_info.country_id);
+    this.getCities(this.selectedState.state_id);
     this.setregForm();
   }
 

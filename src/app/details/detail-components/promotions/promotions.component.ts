@@ -19,7 +19,7 @@ export class PromotionsComponent implements OnInit {
   parseDate(date: any){
     if(date){
       let d = new Date(date);
-      return `${d.getDate()} ${this.months[d.getMonth()]}, ${d.getFullYear()}`
+      return `${d.getDate()} ${this.months[d.getMonth()]} ${d.getFullYear()}`
     }
   }
 

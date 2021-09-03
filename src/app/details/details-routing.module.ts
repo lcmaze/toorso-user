@@ -9,6 +9,7 @@ import { SuccessComponent } from './success/success.component';
 
 const routes: Routes = [
   { path: '', component: InfoComponent },
+  { path: ':slug', component: PriceComponent },
   { path: 'price', component: PriceComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'success', component: SuccessComponent },

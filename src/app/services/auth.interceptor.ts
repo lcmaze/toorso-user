@@ -10,7 +10,7 @@ export class AuthInterceptor implements HttpInterceptor {
     
         request = request.clone({
           setHeaders: {
-            token: `${this.authService.token}`
+            authtoken: `${this.authService.token}`
           }
         });
         

@@ -2,7 +2,7 @@
     <tbody>
         <tr *ngIf="data.vendor_star_level">
             <th width="200px">
-                <mat-icon>star_rate</mat-icon> Star Value</th>
+                <mat-icon>star_rate</mat-icon> Hotel Class</th>
             <td>{{data.vendor_star_level}} Star Resort</td>
         </tr>
         <tr *ngIf="data.city_info">
@@ -22,7 +22,7 @@
                 <li>{{data.near_railway}}</li>
             </td>
         </tr>
-        <tr *ngIf="data.vendor_phone">
+        <tr *ngIf="data.vendor_phone && data.show_phone">
             <th width="200px">
                 <mat-icon>call</mat-icon>Phone</th>
             <td><a [href]="'tel:' + data.vendor_phone">{{data.vendor_phone}}</a></td>
@@ -37,11 +37,11 @@
                 <mat-icon>update</mat-icon>Working</th>
             <td>{{data.vendor_working_days}} | {{data.vendor_working_hours}}</td>
         </tr>
-        <tr *ngIf="data.vendor_keywords">
+        <!-- <tr *ngIf="data.vendor_keywords">
             <th width="200px">
                 <mat-icon>dns</mat-icon>Our Specialities</th>
             <td>{{data.vendor_keywords}}</td>
-        </tr>
+        </tr> -->
         <tr *ngIf="data.facebook || data.twitter || data.linkedin || data.instagram">
             <th width="200px">
                 <mat-icon>group</mat-icon>Social</th>
@@ -65,7 +65,7 @@
                 </li>
             </td>
         </tr>
-        <tr *ngIf="data.vendor_email || data.vendor_website">
+        <tr *ngIf="(data.vendor_email || data.vendor_website) && (data.show_website || data.show_email)">
             <th width="200px">
                 <mat-icon>touch_app</mat-icon>Contact</th>
             <td>

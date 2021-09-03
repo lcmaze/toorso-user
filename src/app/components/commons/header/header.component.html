@@ -1,7 +1,7 @@
 <section class="header">
     <div class="w-80">
         <div class="row mx-0">
-            <div class="col-12 col-md-5 p-0 py-4" [ngClass]="{'py-md-5': country===true, 'pt-md-5 pb-md-4': country===false}">
+            <div class="col-12 col-md-5 p-0 py-4" >
                 <a *ngIf="country" class="logo" href="index.html"><img src="assets/images/logo.png" alt=""></a>
                 <a *ngIf="!country" class="logo2" href="index.html"><img src="assets/images/logo.png" alt=""></a>
             </div>
@@ -15,19 +15,19 @@
                             </ng-container>
                         </mat-menu> -->
                     </div>
-                    <button *ngIf="!isloggedin" mat-button (click)="signup()">Signup</button>
-                    <button *ngIf="!isloggedin" mat-button (click)="loginModal()">Login</button>
+                    <button *ngIf="!userDetails" mat-button (click)="signup()">Signup</button>
+                    <button *ngIf="!userDetails" mat-button (click)="loginModal()">Login</button>
 
                     <ng-container>
                         <div class="isloggedin" [matMenuTriggerFor]="login">
                             <div class="usericon">
                                 <img src="assets/images/user.svg" alt="">
                             </div>
-                            <div class="welcome">Logged in as
+                            <div class="welcome font-family">Logged in as
                                 <mat-icon>arrow_drop_down</mat-icon>
                             </div>
-                            <div class="username" *ngIf="userDetails">{{userDetails.user_name}}</div>
-                            <div class="username" *ngIf="!userDetails">Guest</div>
+                            <div class="username font-family" *ngIf="userDetails">{{userDetails.user_name}}</div>
+                            <div class="username font-family" *ngIf="!userDetails">Guest</div>
 
                             <mat-menu #login="matMenu" xPosition="after">
                                 <!-- <button style="width: 200px" mat-menu-item><mat-icon>account_circle</mat-icon> Profile</button> -->
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="col-12 p-0 px-2" *ngIf="country">
-                <div class="location pb-3 pb-md-4">
+                <div class="location pb-2">
                     <!-- <mat-icon>place</mat-icon> -->
                     <img class="flag" [src]="'assets/images/'+selectedflag" alt="">
                     <button mat-button [matMenuTriggerFor]="country" *ngIf="selectedcountry">{{selectedcountry.country_name}} <mat-icon>arrow_drop_down</mat-icon></button>

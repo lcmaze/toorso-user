@@ -1,16 +1,17 @@
-<section class="write">
+<form class="write" #reviewForm="ngForm" (ngSubmit)="addReview(reviewForm)" *ngIf="data.vendor">
     <h4>Write Review</h4>
-    <mat-form-field appearance="outline" class="w-100">
+    <small>All fields are required</small>
+    <mat-form-field appearance="outline" class="w-100 mt-2">
         <mat-label>Name</mat-label>
-        <input matInput type="text">
+        <input matInput type="text" name="name" ngModel required>
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Review Tagline</mat-label>
-        <input matInput type="text">
+        <input matInput type="text" name="tagline" ngModel required>
     </mat-form-field>
     <mat-form-field appearance="outline" class="w-100">
         <mat-label>Description</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput name="description" ngModel required></textarea>
     </mat-form-field>
 
     <div class="detail mt-2">
@@ -19,7 +20,7 @@
                 <h6>Features</h6>
             </div>
             <div class="col-6 px-0 d-flex justify-content-end">
-                <app-ratingcounter value=1></app-ratingcounter>
+                <app-ratingcounter value=1 (data)="features_rating = $event"></app-ratingcounter>
             </div>
         </div>
         <div class="row mx-0 mt-2">
@@ -27,7 +28,7 @@
                 <h6>Service Quality</h6>
             </div>
             <div class="col-6 px-0 d-flex justify-content-end">
-                <app-ratingcounter value=1></app-ratingcounter>
+                <app-ratingcounter value=1 (data)="services_rating = $event"></app-ratingcounter>
             </div>
         </div>
         <div class="row mx-0 mt-2">
@@ -35,7 +36,7 @@
                 <h6>Value For Money</h6>
             </div>
             <div class="col-6 px-0 d-flex justify-content-end">
-                <app-ratingcounter value=5></app-ratingcounter>
+                <app-ratingcounter value=1 (data)="value_rating = $event"></app-ratingcounter>
             </div>
         </div>
         <div class="row mx-0 mt-2">
@@ -43,10 +44,64 @@
                 <h6>Location</h6>
             </div>
             <div class="col-6 px-0 d-flex justify-content-end">
-                <app-ratingcounter value=4></app-ratingcounter>
+                <app-ratingcounter value=1 (data)="location_rating = $event"></app-ratingcounter>
             </div>
         </div>
     </div>
 
-    <button mat-flat-button color="primary" class="w-100 mt-4">Submit</button>
-</section>
+    <button mat-flat-button color="primary" class="w-100 mt-4" type="submit">Submit</button>
+</form>
+
+<form class="write" #reviewForm="ngForm" (ngSubmit)="updateReview(reviewForm)" *ngIf="data.rating">
+    <h4>Write Review</h4>
+    <small>All fields are required</small>
+    <mat-form-field appearance="outline" class="w-100 mt-2">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" name="name" [ngModel]="data.rating.name" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Review Tagline</mat-label>
+        <input matInput type="text" name="tagline" [ngModel]="data.rating.tagline" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea matInput name="description" [ngModel]="data.rating.description" required></textarea>
+    </mat-form-field>
+
+    <div class="detail mt-2">
+        <div class="row mx-0">
+            <div class="col-6 px-0 d-flex align-items-center">
+                <h6>Features & Facilities</h6>
+            </div>
+            <div class="col-6 px-0 d-flex justify-content-end">
+                <app-ratingcounter [value]=features_rating (data)="features_rating = $event"></app-ratingcounter>
+            </div>
+        </div>
+        <div class="row mx-0 mt-2">
+            <div class="col-6 px-0 d-flex align-items-center">
+                <h6>Service Quality</h6>
+            </div>
+            <div class="col-6 px-0 d-flex justify-content-end">
+                <app-ratingcounter [value]=services_rating (data)="services_rating = $event"></app-ratingcounter>
+            </div>
+        </div>
+        <div class="row mx-0 mt-2">
+            <div class="col-6 px-0 d-flex align-items-center">
+                <h6>Value For Money</h6>
+            </div>
+            <div class="col-6 px-0 d-flex justify-content-end">
+                <app-ratingcounter [value]=value_rating (data)="value_rating = $event"></app-ratingcounter>
+            </div>
+        </div>
+        <div class="row mx-0 mt-2">
+            <div class="col-6 px-0 d-flex align-items-center">
+                <h6>Location & Ambiance</h6>
+            </div>
+            <div class="col-6 px-0 d-flex justify-content-end">
+                <app-ratingcounter [value]=location_rating (data)="location_rating = $event"></app-ratingcounter>
+            </div>
+        </div>
+    </div>
+
+    <button mat-flat-button color="primary" class="w-100 mt-4" type="submit">Submit</button>
+</form>

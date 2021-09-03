@@ -132,9 +132,9 @@ export class AsideComponent implements OnInit {
   selectedCategories: any = [];
   selectedFilter_category: any = [];
   selectCategory(ev: any, index: any){
-    console.log(ev.target.value);
+    // console.log(ev.target.value);
     if(ev){
-      let value = Number(ev.target.value);
+      let value = ev.target.value;
       this.sub_categories[index].checked = ev.target.checked;
       if(ev.target.checked){
         this.selectedCategories.push(value);

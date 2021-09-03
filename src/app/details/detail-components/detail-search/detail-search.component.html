@@ -1,14 +1,14 @@
-<div class="row mx-0">
+<div class="row mx-0" *ngIf="data">
     <div class="col-6 p-2">
         <div class="datepicker p-3" (click)="picker1.open()">
-            <label><span class="material-icons">event</span> Check-in</label>
+            <label><span class="material-icons">event</span> Check-in: {{data.checkin_time}}</label>
             <input [matDatepicker]="picker1" placeholder="--/--/----">
             <mat-datepicker #picker1></mat-datepicker>
         </div>
     </div>
     <div class="col-6 p-2">
         <div class="datepicker p-3" (click)="picker2.open()">
-            <label><span class="material-icons">event</span> Check-out</label>
+            <label><span class="material-icons">event</span> Check-out: {{data.checkout_time}}</label>
             <input [matDatepicker]="picker2" placeholder="--/--/----">
             <mat-datepicker #picker2></mat-datepicker>
         </div>
@@ -22,6 +22,8 @@
         </div>
     </div>
     <div class="col-12 col-md-4 col-lg-12 col-xl-4 p-2">
-        <button mat-flat-button class="change" color="primary">Change Search</button>
+        <button mat-flat-button class="change"
+        style="background: #0274b9;"
+        color="primary">Change Search</button>
     </div>
 </div>

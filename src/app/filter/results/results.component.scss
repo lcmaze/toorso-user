@@ -5,12 +5,48 @@
     background-color: #fff;
     border: 3px solid #fff;
 }
-
+.star-image{
+    img{
+        width: 20px;
+    }
+}
 .result-box:hover {
     outline: 2px solid #c62828;
     box-shadow: 0px 10px 24px -3px #c6282830;
 }
+.railway-train{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 1rem;
+}
+.railway_airport{
+    h5{
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 3px;
+    }
+    h6{
+        color: #424242;
+        text-transform: capitalize;
+        font-size: 15px;
+        margin-top: 6px;
+    }
+}
 
+.discount-rate{
+    font-size: 12px;
+    font-weight: 600;
+    span{
+        text-decoration: line-through;
+    }
+}
+
+.gallery-full-height{
+    height: 100% !important;
+    max-height: 100% !important;
+}
 
 .gallery {
     min-height: 140px;
@@ -119,9 +155,15 @@
     }
 }
 
+::ng-deep .mat-tooltip {
+    background: rgba(0,0,0,0.9);
+    color: white;
+}
+
 .facilities {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-flow: column;
     h5 {
         font-size: 14px;
         color: #3d3d3d;
@@ -208,6 +250,47 @@
 .lnk {
     outline: none;
     cursor: pointer;
+}
+
+.right {
+    // padding-right: 10px;
+    justify-content: space-between;
+    align-items: center;
+    .stars {
+        margin-top: 9px;
+        margin-right: 5px;
+        position: relative;
+        .grey-s {
+            white-space: nowrap;
+            // position: absolute;
+            // z-index: 1;
+            // top: 0;
+            // overflow: hidden;
+            .material-icons {
+                color: #cfcfcf;
+                font-size: 17px;
+            }
+        }
+        .red-s {
+            white-space: nowrap;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            overflow: hidden;
+            .material-icons {
+                color: #C62828;
+                font-size: 17px;
+            }
+        }
+    }
+    .review {
+        color: #7e7e7e;
+        .material-icons {
+            font-size: 24px;
+            vertical-align: text-bottom;
+            margin-right: 6px;
+        }
+    }
 }
 
 @media(max-width:1199.98px) {

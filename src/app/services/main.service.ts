@@ -25,12 +25,21 @@ export class MainService {
 
   selectedCountry: any = new Subject<any>();
   selectedState: any = new Subject<any>();
+  state: any;
   selectedDistrict: any = new Subject<any>();
   selectedMainCategory: any = new Subject<any>();
 
   filterLink: any;
   changeFilter(link: any){
     this.filterLink = link;
+  }
+
+  put(value: any, link: string){
+    return this.http.put(environment.apiUrl + link, JSON.stringify(value), {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
   }
 
   post(value: any, link: string){
@@ -73,8 +82,8 @@ export class MainService {
   showToast(msg: string){
     this._snackBar.open(msg, "close");
   }
-
   
+
   // show loading 
   showLoadingFlag = new Subject<boolean>();
   showLoading(){

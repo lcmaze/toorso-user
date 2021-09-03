@@ -1,4 +1,4 @@
-<app-header [country]=true [isloggedin]=true></app-header>
+<app-header [country]=true></app-header>
 <app-search [country]=false [timeguest]=false></app-search>
 
 <ng-container *ngIf="vendor">
@@ -23,13 +23,22 @@
                         <div class="detail">
                             <div class="name">
                                 <h1>{{vendor.vendor_name}}</h1>
+<<<<<<< HEAD
                                 <h6><span class="material-icons">location_on</span><span>{{vendor.city_info.city_name}}</span>,
                                     <span>{{vendor.city_info.states_info.state_name}}</span>,
                                     <span>{{vendor.city_info.states_info.country_info.country_name}}</span></h6>
+=======
+                                <h6><span class="material-icons">location_on</span>
+                                    <span *ngIf="vendor.vendor_area">{{vendor.vendor_area}} | </span> 
+                                    <span *ngIf="vendor.city_info">{{vendor.city_info.city_name}} | </span> 
+                                    <span *ngIf="vendor.city_info.states_info">{{vendor.city_info.states_info.state_name}}</span>
+                                    <!-- <span>{{vendor.city_info.states_info.country_info.country_name}}</span> -->
+                                </h6>
+>>>>>>> e1affdaf9c6c6ce10a485392788dd0d246f8a04c
                             </div>
                             <div class="starrating">
                                 <div class="score">
-                                    4.4
+                                    {{total_rating | number : '1.1-1'}}
                                 </div>
                                 <div class="right">
                                     <div class="stars">
@@ -40,7 +49,7 @@
                                             <span class="material-icons">grade</span>
                                             <span class="material-icons">grade</span>
                                         </div>
-                                        <div class="red-s" style="width: 50%;">
+                                        <div class="red-s" [style.width]="(total_rating/5)*100 + '%'">
                                             <span class="material-icons">grade</span>
                                             <span class="material-icons">grade</span>
                                             <span class="material-icons">grade</span>
@@ -48,7 +57,7 @@
                                             <span class="material-icons">grade</span>
                                         </div>
                                     </div>
-                                    <div class="review"><span class="material-icons">person</span> 825 Reviews</div>
+                                    <div class="review"><span class="material-icons">person</span> {{ratings_count}} Reviews</div>
                                 </div>
                             </div>
                         </div>
@@ -59,8 +68,8 @@
                             <img style="max-width: 120px;width:100%" src="assets/images/verified.png" alt="">
                         </div>
                         <div class="col-md-10 px-0 pl-md-3 mt-4">
-                            <mat-chip-list *ngIf="vendor.vendor_keywords">
-                                <mat-chip class="px-2 py-0" style="min-height: 29px;text-transform: capitalize;" color="accent" selected *ngFor="let t of vendor.vendor_keywords.split(',')">{{t}}</mat-chip>
+                            <mat-chip-list *ngIf="highlighted_keywords && highlighted_keywords.length > 0">
+                                <mat-chip class="px-2 py-0" style="min-height: 29px;text-transform: capitalize;background: #0274b9" color="accent" selected *ngFor="let t of highlighted_keywords | slice:0:4">{{t}}</mat-chip>
                             </mat-chip-list>
                         </div>
                     </div>
@@ -73,8 +82,17 @@
                         <button mat-stroked-button class="mb-3" (click)="readmore()">{{read_more ? 'Read Less' : 'Read More'}}</button>
                         <app-detail-table [data]="vendor"></app-detail-table>
                     </div>
+<<<<<<< HEAD
 
                     <h2 class="heading pb-3 mt-4 mb-3">Free Facilities</h2>
+=======
+    
+                    <h2 class="heading pb-3 mt-4 mb-3"
+                    *ngIf="(vendor.branch_facilities && vendor.branch_facilities.length > 0) && 
+                    (vendor.branch_transportations && vendor.branch_transportations.length > 0) && 
+                    (vendor.branch_foods && vendor.branch_foods.length > 0)" 
+                    >Free Facilities</h2>
+>>>>>>> e1affdaf9c6c6ce10a485392788dd0d246f8a04c
                     <div class="facilities">
                         <div class="row mx-0">
                             <ng-container *ngFor="let f of vendor.branch_facilities">
@@ -96,9 +114,10 @@
                     </div>
 
                     <ng-container *ngIf="vendor.branch_images && vendor.branch_images.length > 0">
-                        <h2 class="heading pb-3 mt-4 mb-3">Gallery</h2>
+                        <!-- <h2 class="heading pb-3 mt-4 mb-3">Gallery</h2> -->
                         <app-gallery [data]="vendor.branch_images"></app-gallery>
                     </ng-container>
+<<<<<<< HEAD
 
                     <h2 class="heading pb-3 mt-4 mb-3">Available Facilities <span>(Additional Cost Applicable)</span></h2>
                     <div class="facilities">
@@ -130,31 +149,88 @@
                                     <li><span class="filterfont">{{f.food_arrangement.icon}}</span> {{f.food_arrangement.food_name}}</li>
                                 </div>
                             </ng-container>
+=======
+    
+                    <ng-container 
+                    *ngIf="(vendor.branch_facilities && vendor.branch_facilities.length > 0) || 
+                    (vendor.branch_transportations && vendor.branch_transportations.length > 0) || 
+                    (vendor.branch_foods && vendor.branch_foods.length > 0)">
+                        <h2 class="heading pb-3 mt-4 mb-3" >Available Facilities <span>(Additional Cost Applicable)</span></h2>
+                        <div class="facilities">
+                            <div class="row mx-0">
+                                <ng-container *ngFor="let f of vendor.branch_facilities">
+                                    <div class="col-6 col-xl-4 px-0" *ngIf="f.facility_type != 'free'">
+                                        <li matTooltip="Price as per Request"><span class="filterfont">{{f.facility.icon}}</span> {{f.facility.facility_name}}</li>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngFor="let f of vendor.branch_transportations">
+                                    <div class="col-6 col-xl-4 px-0" *ngIf="f.transportation_type != 'free'">
+                                        <li matTooltip="Price as per Request"><span class="filterfont">{{f.transportation_facility.icon}}</span> {{f.transportation_facility.transportation_name}}</li>
+                                    </div>
+                                </ng-container>
+                                <ng-container *ngFor="let f of vendor.branch_foods">
+                                    <div class="col-6 col-xl-4 px-0" *ngIf="f.food_type != 'free'">
+                                        <li matTooltip="Price as per Request"><span class="filterfont">{{f.food_arrangement.icon}}</span> {{f.food_arrangement.food_name}}</li>
+                                    </div>
+                                </ng-container>
+                            </div>
                         </div>
-                    </div>
+                    </ng-container>
+    
+                    <!-- <ng-container *ngIf="vendor.branch_transportations && vendor.branch_transportations.length > 0">
+                        <h2 class="heading pb-3 mt-4 mb-3">Transportation Facilities <span>(Additional Cost Applicable)</span></h2>
+                        <div class="facilities">
+                            <div class="row mx-0">
+                                <ng-container *ngFor="let f of vendor.branch_transportations">
+                                    <div class="col-6 col-xl-4 px-0">
+                                        <li><span class="filterfont">{{f.transportation_facility.icon}}</span> {{f.transportation_facility.transportation_name}}</li>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </ng-container> -->
+    
+                    <!-- <ng-container *ngIf="vendor.branch_foods && vendor.branch_foods.length > 0">
+                        <h2 class="heading pb-3 mt-4 mb-3">Food Facilities <span>(Additional Cost Applicable)</span></h2>
+                        <div class="facilities">
+                            <div class="row mx-0">
+                                <ng-container *ngFor="let f of vendor.branch_foods">
+                                    <div class="col-6 col-xl-4 px-0">
+                                        <li><span class="filterfont">{{f.food_arrangement.icon}}</span> {{f.food_arrangement.food_name}}</li>
+                                    </div>
+                                </ng-container>
+                            </div>
+>>>>>>> e1affdaf9c6c6ce10a485392788dd0d246f8a04c
+                        </div>
+                    </ng-container> -->
+
                 </div>
                 <div class="col-lg-4 col-xl-5">
                     <div class="p-2 mb-3">
                         <app-promotions *ngIf="vendor.product_promotion" [data]="vendor.product_promotion"></app-promotions>
                     </div>
-                    <app-detail-search></app-detail-search>
+                    <app-detail-search [data]="vendor"></app-detail-search>
                     <div class="p-2" *ngIf="vendor.vendor_products && vendor.vendor_products.length > 0">
-                        <div class="res mt-4 mb-3">Room Availablity <span>({{vendor.vendor_products.length}})</span> </div>
+                        <div class="res mt-4 mb-3">Room Availablity
+                            <!-- <span>({{vendor.vendor_products.length}})</span> -->
+                        </div>
                         <div class="price">
                             <li *ngFor="let p of vendor.vendor_products;let i = index">
-                                <div class="row mx-0">
-                                    <div class="col-8 p-3">
-                                        <h5 class="cat-name">{{p.room_type}}</h5>
-                                        <ng-container *ngIf="p.highlighted_features">
-                                            <div class="type" *ngFor="let f of p.highlighted_features.split(',')"><span class="material-icons">fiber_manual_record</span> {{f}}</div>
-                                        </ng-container>
+                                <ng-container *ngIf="p.price && !p.price <= 0">
+                                    <div class="row mx-0">
+                                        <div class="col-8 p-3">
+                                            <h5 class="cat-name">{{p.room_type}}</h5>
+                                            <ng-container *ngIf="p.parsed_highlited_features">
+                                                <div class="type" *ngFor="let f of p.parsed_highlited_features | slice:0:2"><span class="material-icons">fiber_manual_record</span> {{f}}</div>
+                                            </ng-container>
+                                        </div>
+                                        <div class="col-4 p-3">
+                                            <div class="offer" *ngIf="vendor.product_promotion"><span>₹ {{p.original_price}}</span> {{vendor.product_promotion.discount}}% Discount</div>
+                                            <h5 class="amount">₹ {{p.price | number:'1.2'}}</h5>
+                                            <h6 class="per-day">Per Day</h6>
+                                        </div>
                                     </div>
-                                    <div class="col-4 p-3">
-                                        <div class="offer"><span>₹ 1400</span> 5% Discount</div>
-                                        <h5 class="amount">₹ 7,600</h5>
-                                        <h6 class="per-day">Per Day</h6>
-                                    </div>
-                                </div>
+                                </ng-container>
                             </li>
                             <!-- <li class="disabled">
                                 <div class="row mx-0">
@@ -171,7 +247,9 @@
                                 </div>
                             </li> -->
                         </div>
-                        <button mat-flat-button class="change mt-3 py-2" routerLink="/details/price" color="primary">More Info / Proceed to Choose</button>
+                        <button mat-flat-button class="change mt-3 py-2" 
+                        style="background: #0274b9"
+                        [routerLink]="'/vendor-checkout/' + slug" color="primary">More Info / Proceed to Choose</button>
                     </div>
 
                     <ng-container *ngIf="mapLink">
@@ -179,14 +257,18 @@
                         <iframe [src]="mapLink" frameborder="0" style="border-radius: 6px; overflow: hidden; box-shadow: 0px 3px 6px 0px #00000030;" width="100%" height="320"></iframe>
                     </ng-container>
 
-                    <h2 class="heading pb-3 mt-5 mb-3">Reviews & Ratings</h2>
-                    <div class="rating">
-                        <div class="row mx-0">
-                            <div class="col-12 col-md-6 col-lg-12 col-xl-5 p-3 px-5 d-flex justify-content-center justify-content-lg-start justify-content-lg-center justify-content-xl-start">
-                                <div class="tot">
-                                    <div class="total">3.5 <span class="material-icons">star_rate</span> </div>
-                                    <div class="total-foot">Based on <br><span>58,000</span> Reviews</div>
+                    <ng-container>
+                        <h2 class="heading pb-3 mt-5 mb-3">Reviews & Ratings</h2>
+                        <div class="rating">
+                            <div class="row mx-0">
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-5 p-3 px-5 d-flex justify-content-center justify-content-lg-start justify-content-lg-center justify-content-xl-start">
+                                    <div class="tot">
+                                        <div class="total" *ngIf="total_rating">{{total_rating | number : '1.1-1'}} <span class="material-icons">star_rate</span> </div>
+                                        <div class="total" *ngIf="!total_rating">0 <span class="material-icons">star_rate</span> </div>
+                                        <h6 class="total-foot">Based on <span>{{ratings_count | number}}</span> Reviews</h6>
+                                    </div>
                                 </div>
+<<<<<<< HEAD
                             </div>
 
                             <div class="col-12 col-md-6 col-lg-12 col-xl-7 p-3 d-flex align-items-center">
@@ -199,43 +281,72 @@
                                 <div class="part">
                                     <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
                                     <h5>Features</h5>
+=======
+        
+                                <div class="col-12 col-md-6 col-lg-12 col-xl-7 p-3 d-flex align-items-center">
+                                    <button mat-flat-button color="accent" 
+                                    style="background: #c62828"
+                                    class="review-btn p-2" (click)="writereview()">Write a Review!!!<br><span class="d-none d-md-block d-lg-none d-xl-block">Click Here</span></button>
+>>>>>>> e1affdaf9c6c6ce10a485392788dd0d246f8a04c
                                 </div>
                             </div>
-                            <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
-                                <div class="part">
-                                    <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
-                                    <h5>Service Quality</h5>
+                            <hr class="my-0">
+                            <div class="row mx-0" *ngIf="total_rating">
+                                <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                                    <div class="part">
+                                        <app-percentage [percentage]="((features_rating/ratings_count)*100/5)" [value]="features_rating/ratings_count"></app-percentage>
+                                        <h5>Features & Facilities</h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
-                                <div class="part">
-                                    <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
-                                    <h5>Value for Money</h5>
+                                <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                                    <div class="part">
+                                        <app-percentage [percentage]="((service_rating/ratings_count)*100/5)" [value]="service_rating/ratings_count"></app-percentage>
+                                        <h5>Service Quality</h5>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
-                                <div class="part">
-                                    <app-percentage [percentage]="35" [value]="3.5"></app-percentage>
-                                    <h5>Location</h5>
+                                <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                                    <div class="part">
+                                        <app-percentage [percentage]="((value_rating/ratings_count)*100/5)" [value]="value_rating/ratings_count"></app-percentage>
+                                        <h5>Value for Money</h5>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 col-lg-6 col-xl-3 p-3 px-0">
+                                    <div class="part">
+                                        <app-percentage [percentage]="((location_rating/ratings_count)*100/5)" [value]="location_rating/ratings_count"></app-percentage>
+                                        <h5>Location & Ambiance</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                     </div>
 
+=======
+                    </ng-container>
+    
+>>>>>>> e1affdaf9c6c6ce10a485392788dd0d246f8a04c
                     <div class="w-100">
-                        <app-comments></app-comments>
-                        <app-comments></app-comments>
-                        <app-comments></app-comments>
+                        <app-comments *ngFor="let c of vendor.ratings" [data]="c"></app-comments>
                     </div>
 
                     <div class="text-center">
-                        <button mat-flat-button color="primary" class="mt-3">View More Reviews</button>
+                        <!-- <button mat-flat-button color="primary" class="mt-3">View More Reviews</button> -->
                     </div>
+<<<<<<< HEAD
 
                     <h2 class="heading pb-3 mt-5 mb-3">Video</h2>
                     <div class="video" *ngIf="youtubeLink">
                         <iframe width="100%" height="315" [src]="youtubeLink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
+=======
+    
+                    <ng-container *ngIf="youtubeLink">
+                        <h2 class="heading pb-3 mt-5 mb-3">Video</h2>
+                        <div class="video" *ngIf="youtubeLink">
+                            <iframe width="100%" height="315" [src]="youtubeLink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </ng-container>
+>>>>>>> e1affdaf9c6c6ce10a485392788dd0d246f8a04c
                 </div>
             </div>
 
