@@ -1,0 +1,112 @@
+.page_cap {
+    font-size: 28px;
+    font-family: "Open Sans SB";
+}
+
+.box {
+    box-shadow: 0px 4px 8px 0px #00000015;
+    background-color: #fff;
+    border-radius: 6px;
+    border: 1px solid #00000015;
+    overflow: hidden;
+    transition: all .3s ease;
+    .hotel_img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .hotel_name {
+        color: #3d3d3d;
+        font-size: 22px;
+        margin-bottom: 0px;
+        font-family: "Open Sans SB";
+    }
+    .hotel_details {
+        max-width: 600px;
+        display: flex;
+        li {
+            .material-icons {
+                font-size: 18px;
+                vertical-align: text-top;
+                padding-right: 4px
+            }
+            font-family: "Open Sans R";
+            font-size: 16px;
+            color: #7e7e7e;
+            list-style: none;
+            margin-right: 26px;
+        }
+    }
+    .hotel_status {
+        .material-icons {
+            font-size: 16px;
+            vertical-align: text-top;
+            padding-right: 4px
+        }
+        font-family: "Open Sans SB";
+        font-size: 14px;
+        display: inline-block;
+        padding: 6px 8px 6px 6px;
+        border-radius: 6px;
+    }
+    .upcomming {
+        color: #120075;
+        background-color: #12007515;
+    }
+    .completed {
+        color: #00753f;
+        background-color: #00753f15;
+    }
+    .refund {
+        color: #858f00;
+        background-color: #858f0015;
+    }
+    .cancelled {
+        color: #750000;
+        background-color: #75000015;
+    }
+    .box-right {
+        border-left: 1px solid #00000010;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-flow: column;
+    }
+    .hotel_price {
+        font-family: "Open Sans SB";
+        color: #3d3d3d;
+    }
+    .hotel_payment {
+        .material-icons {
+            vertical-align: text-top;
+            padding-right: 4px;
+            font-size: 18px;
+        }
+        font-size: 14px;
+        color: #7e7e7e;
+        font-family: "Open Sans SB";
+    }
+}
+
+.box:hover {
+    box-shadow: 0px 4px 8px 0px #00000020;
+    background-color: #fafafa;
+    cursor: pointer;
+}
+
+@media (max-width: 767.98px) {
+    .box {
+        padding: 4px 10px;
+        .hotel_details {
+            display: flex;
+            flex-flow: column;
+            li {
+                font-family: "Open Sans R";
+                margin-right: 6px;
+            }
+        }
+        .box-right {
+            border-left: 0px;
+        }
+    }
+}

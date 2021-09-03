@@ -1,0 +1,110 @@
+<app-header [country]=true [isloggedin]=true></app-header>
+<app-search [country]=false [timeguest]=false></app-search>
+
+<ng-container style="background-color: #fafafa;">
+    <div class="w-80">
+        <div class="row">
+            <div class="col-12 col-xl-9 pb-4">
+                <h1 class="page_cap py-4">Bookings</h1>
+
+                <div class="box mb-4" routerLink="/bookings/details">
+                    <div class="row">
+                        <div class="col-md-2 d-none d-md-block px-0">
+                            <img class="hotel_img" src="assets/images/resort2.jpg" alt="">
+                        </div>
+                        <div class="col-12 col-md-8 px-3 py-2" style="padding-left: 20px !important;">
+                            <h2 class="hotel_name mb-2">Name of the hotel</h2>
+                            <div class="hotel_details mb-2">
+                                <li class="hotel_location"><span class="material-icons">location_on</span> Munnar</li>
+                                <li class="hotel_date"><span class="material-icons">schedule</span> Jul 10 - Jul 12</li>
+                                <li class="hotel_rooms"><span class="material-icons">bed</span> 2 rooms</li>
+                            </div>
+                            <h2 class="hotel_status upcomming"><span class="material-icons">next_plan</span> Upcomming</h2>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="box-right">
+                                <h4 class="hotel_price mb-0 py-md-3 pb-3 pl-2 pl-md-3">₹ 5,600</h4>
+                                <hr class="w-100 my-0">
+                                <h5 class="hotel_payment mb-1 p-2 pl-md-3"><span class="material-icons">payment</span> Unpaid</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box mb-4" routerLink="/bookings/details">
+                    <div class="row">
+                        <div class="col-md-2 d-none d-md-block px-0">
+                            <img class="hotel_img" src="assets/images/resort2.jpg" alt="">
+                        </div>
+                        <div class="col-12 col-md-8 px-3 py-2" style="padding-left: 20px !important;">
+                            <h2 class="hotel_name mb-2">Name of the hotel</h2>
+                            <div class="hotel_details mb-2">
+                                <li class="hotel_location"><span class="material-icons">location_on</span> Munnar</li>
+                                <li class="hotel_date"><span class="material-icons">schedule</span> Jul 10 - Jul 12</li>
+                                <li class="hotel_rooms"><span class="material-icons">bed</span> 2 rooms</li>
+                            </div>
+                            <h2 class="hotel_status completed"><span class="material-icons">done</span> Completed</h2>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="box-right">
+                                <h4 class="hotel_price mb-0 py-md-3 pb-3 pl-2 pl-md-3">₹ 5,600</h4>
+                                <hr class="w-100 my-0">
+                                <h5 class="hotel_payment mb-1 p-2 pl-md-3"><span class="material-icons">payment</span> Paid</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box mb-4" routerLink="/bookings/details">
+                    <div class="row">
+                        <div class="col-md-2 d-none d-md-block px-0">
+                            <img class="hotel_img" src="assets/images/resort2.jpg" alt="">
+                        </div>
+                        <div class="col-12 col-md-8 px-3 py-2" style="padding-left: 20px !important;">
+                            <h2 class="hotel_name mb-2">Name of the hotel</h2>
+                            <div class="hotel_details mb-2">
+                                <li class="hotel_location"><span class="material-icons">location_on</span> Munnar</li>
+                                <li class="hotel_date"><span class="material-icons">schedule</span> Jul 10 - Jul 12</li>
+                                <li class="hotel_rooms"><span class="material-icons">bed</span> 2 rooms</li>
+                            </div>
+                            <h2 class="hotel_status refund"><span class="material-icons">assignment_returned</span> Refund</h2>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="box-right">
+                                <h4 class="hotel_price mb-0 py-md-3 pb-3 pl-2 pl-md-3">₹ 5,600</h4>
+                                <hr class="w-100 my-0">
+                                <h5 class="hotel_payment mb-1 p-2 pl-md-3">-</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box mb-4" routerLink="/bookings/details">
+                    <div class="row">
+                        <div class="col-md-2 d-none d-md-block px-0">
+                            <img class="hotel_img" src="assets/images/resort2.jpg" alt="">
+                        </div>
+                        <div class="col-12 col-md-8 px-3 py-2" style="padding-left: 20px !important;">
+                            <h2 class="hotel_name mb-2">Name of the hotel</h2>
+                            <div class="hotel_details mb-2">
+                                <li class="hotel_location"><span class="material-icons">location_on</span> Munnar</li>
+                                <li class="hotel_date"><span class="material-icons">schedule</span> Jul 10 - Jul 12</li>
+                                <li class="hotel_rooms"><span class="material-icons">bed</span> 2 rooms</li>
+                            </div>
+                            <h2 class="hotel_status cancelled"><span class="material-icons">close</span> Cancelled</h2>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="box-right">
+                                <h4 class="hotel_price mb-0 py-md-3 pb-3 pl-2 pl-md-3">₹ 5,600</h4>
+                                <hr class="w-100 my-0">
+                                <h5 class="hotel_payment mb-1 p-2 pl-md-3">-</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<app-footer></app-footer>

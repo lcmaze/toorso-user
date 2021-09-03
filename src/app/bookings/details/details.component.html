@@ -1,0 +1,119 @@
+<app-header [country]=true [isloggedin]=true></app-header>
+<app-search [country]=false [timeguest]=false></app-search>
+
+<ng-container style="background-color: #fafafa;">
+    <div class="w-80">
+        <div class="row py-5">
+            <div class="col-md-7 col-xl-8">
+                <div class="hotel mb-4">
+                    <img class="hotel_img mr-3" src="assets/images/resort2.jpg" alt="">
+                    <h1 class="hotel_name">Hotel Name</h1>
+                    <h2 class="hotel_sub"><span class="material-icons">home</span> Abc Road, Near to Xyz Building, Next Zone, Chalakudy</h2>
+                    <h2 class="hotel_sub"><span class="material-icons">location_on</span> Chalakudy, Thrissur, Kerala</h2>
+                    <h2 class="hotel_sub"><span class="material-icons">call</span> +91 989898989</h2>
+                    <h2 class="hotel_sub"><span class=" material-icons ">gps_fixed</span> N 010° 5.237, E 77° 4.089</h2>
+                </div>
+                <hr>
+                <div class="booking mb-4">
+                    <h5 class="booking_no">Booking Number : <span>1377</span></h5>
+                    <h5 class="booking_no">Confirmation Number : <span>2499.766.237</span></h5>
+                </div>
+                <hr>
+                <div class="details mb-4">
+                    <h6 class="details_date"><i class="material-icons">east</i> Checkin : <span>23 July 2021</span></h6>
+                    <h6 class="details_date"><i class="material-icons">west</i> Checkout : <span>24 July 2021</span></h6>
+                </div>
+                <hr>
+
+                <div class="room p-3 mb-4">
+                    <h6 class="room_cap">Room 1</h6>
+                    <h6 class="room_name">Ordinary Room - Suitable for 1 Adult</h6>
+                    <h6 class="room_type">Non AC - Single Bed</h6>
+                    <label class="mb-0">Facilities</label>
+                    <div class="room_facility">
+                        <li>200 Sqft Room</li>
+                        <li>32" LED TV</li>
+                        <li>Sofa</li>
+                    </div>
+                    <label class="mb-0">Offers</label>
+                    <div class="room_facility">
+                        <li>Free Breakfast</li>
+                        <li>Free Lunch</li>
+                    </div>
+                </div>
+                <div class="room p-3 mb-4">
+                    <h6 class="room_cap">Room 1</h6>
+                    <h6 class="room_name">Ordinary Room - Suitable for 1 Adult</h6>
+                    <h6 class="room_type">Non AC - Single Bed</h6>
+                    <label class="mb-0">Facilities</label>
+                    <div class="room_facility">
+                        <li>200 Sqft Room</li>
+                        <li>32" LED TV</li>
+                        <li>Sofa</li>
+                    </div>
+                    <label class="mb-0">Offers</label>
+                    <div class="room_facility">
+                        <li>Free Breakfast</li>
+                        <li>Free Lunch</li>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-xl-4">
+                <div class="checkout-menu mt-4 mx-2">
+                    <div class="bill-section">
+                        <div class="row mx-0">
+                            <div class="col-6 px-0">
+                                <div class="name">Name</div>
+                            </div>
+                            <div class="col px-0">
+                                <div class="qty">Qty</div>
+                            </div>
+                            <div class="col px-0">
+                                <div class="price">Price</div>
+                            </div>
+                        </div>
+
+                        <ng-container>
+                            <div class="row mx-0">
+                                <div class="col-6 px-0">
+                                    <div class="name1">Ordinary Room - Suitable for 1 Adult</div>
+                                </div>
+                                <div class="col px-0">
+                                    <div class="qty1">2</div>
+                                </div>
+                                <div class="col px-0">
+                                    <div class="price1">₹ 2400</div>
+                                </div>
+                            </div>
+
+                            <div class="row mx-0">
+                                <div class="col-6 px-0">
+                                    <div class="name1">Extra 1 Person</div>
+                                </div>
+                                <div class="col px-0">
+                                    <div class="qty1">1</div>
+                                </div>
+                                <div class="col px-0">
+                                    <div class="price1">₹ 100</div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                        <div class="row mx-0">
+                            <div class="col-9 px-0">
+                                <div class="total">Total</div>
+                            </div>
+                            <div class="col px-0">
+                                <div class="price2">₹ 2500</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-danger btn-sm mt-3 ml-2">Cancel Booking</button>
+                <button class="btn btn-success btn-sm mt-3 ml-2">Download Invoice</button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<app-footer></app-footer>
